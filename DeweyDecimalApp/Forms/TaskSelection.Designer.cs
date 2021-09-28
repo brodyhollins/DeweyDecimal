@@ -38,12 +38,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.usernameLb = new System.Windows.Forms.Label();
-            this.ProfileIconPb = new System.Windows.Forms.PictureBox();
+            this.BadgesBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfileIconPb)).BeginInit();
             this.SuspendLayout();
             // 
             // ReplacingBooksBtn
@@ -151,50 +147,33 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.BadgesBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15);
-            this.panel1.Size = new System.Drawing.Size(728, 60);
+            this.panel1.Size = new System.Drawing.Size(728, 40);
             this.panel1.TabIndex = 13;
             // 
-            // panel2
+            // BadgesBtn
             // 
-            this.panel2.Controls.Add(this.usernameLb);
-            this.panel2.Controls.Add(this.ProfileIconPb);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(430, 15);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(283, 30);
-            this.panel2.TabIndex = 0;
-            // 
-            // usernameLb
-            // 
-            this.usernameLb.AutoSize = true;
-            this.usernameLb.Dock = System.Windows.Forms.DockStyle.Right;
-            this.usernameLb.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLb.ForeColor = System.Drawing.Color.White;
-            this.usernameLb.Location = new System.Drawing.Point(211, 0);
-            this.usernameLb.Margin = new System.Windows.Forms.Padding(0);
-            this.usernameLb.MinimumSize = new System.Drawing.Size(0, 30);
-            this.usernameLb.Name = "usernameLb";
-            this.usernameLb.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.usernameLb.Size = new System.Drawing.Size(42, 30);
-            this.usernameLb.TabIndex = 1;
-            this.usernameLb.Text = "user";
-            this.usernameLb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ProfileIconPb
-            // 
-            this.ProfileIconPb.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ProfileIconPb.Image = ((System.Drawing.Image)(resources.GetObject("ProfileIconPb.Image")));
-            this.ProfileIconPb.Location = new System.Drawing.Point(253, 0);
-            this.ProfileIconPb.Name = "ProfileIconPb";
-            this.ProfileIconPb.Size = new System.Drawing.Size(30, 30);
-            this.ProfileIconPb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.ProfileIconPb.TabIndex = 0;
-            this.ProfileIconPb.TabStop = false;
+            this.BadgesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BadgesBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BadgesBtn.FlatAppearance.BorderSize = 0;
+            this.BadgesBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.BadgesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BadgesBtn.Font = new System.Drawing.Font("Red Hat Display Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BadgesBtn.ForeColor = System.Drawing.Color.White;
+            this.BadgesBtn.Image = ((System.Drawing.Image)(resources.GetObject("BadgesBtn.Image")));
+            this.BadgesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BadgesBtn.Location = new System.Drawing.Point(613, 0);
+            this.BadgesBtn.Name = "BadgesBtn";
+            this.BadgesBtn.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.BadgesBtn.Size = new System.Drawing.Size(115, 40);
+            this.BadgesBtn.TabIndex = 1;
+            this.BadgesBtn.Text = "Awards";
+            this.BadgesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BadgesBtn.UseVisualStyleBackColor = true;
+            this.BadgesBtn.Click += new System.EventHandler(this.BadgesBtn_Click);
             // 
             // TaskSelection
             // 
@@ -216,9 +195,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskSelection";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfileIconPb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,8 +211,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label usernameLb;
-        private System.Windows.Forms.PictureBox ProfileIconPb;
+        private System.Windows.Forms.Button BadgesBtn;
     }
 }

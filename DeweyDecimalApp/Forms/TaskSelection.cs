@@ -24,5 +24,13 @@ namespace DeweyDecimalApp.Forms
             replacingBooksTask.ShowDialog();
             this.Close();
         }
+
+        private void BadgesBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AwardsTracker awardsTracker = new AwardsTracker();
+            awardsTracker.ShowDialog();
+            this.Close();
+        }
     }
 }
