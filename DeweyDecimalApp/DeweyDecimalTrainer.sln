@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeweyDecimalApp", "DeweyDecimalApp.csproj", "{5DEF0B82-B2F8-485C-9093-9B52DDEE6A10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallNumbers", "..\CallNumbers\CallNumbers.csproj", "{7B0D5E05-167D-44EB-A6EF-4A20153FFB23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallNumbers", "..\CallNumbers\CallNumbers.csproj", "{4EEF23C7-472B-477C-A197-5914F1C75489}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{5DEF0B82-B2F8-485C-9093-9B52DDEE6A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DEF0B82-B2F8-485C-9093-9B52DDEE6A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DEF0B82-B2F8-485C-9093-9B52DDEE6A10}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B0D5E05-167D-44EB-A6EF-4A20153FFB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B0D5E05-167D-44EB-A6EF-4A20153FFB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B0D5E05-167D-44EB-A6EF-4A20153FFB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B0D5E05-167D-44EB-A6EF-4A20153FFB23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EEF23C7-472B-477C-A197-5914F1C75489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EEF23C7-472B-477C-A197-5914F1C75489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EEF23C7-472B-477C-A197-5914F1C75489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EEF23C7-472B-477C-A197-5914F1C75489}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
