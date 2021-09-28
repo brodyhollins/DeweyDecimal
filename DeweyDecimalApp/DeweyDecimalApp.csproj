@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Awards.cs" />
     <Compile Include="Forms\AwardsTracker.cs">
       <SubType>Form</SubType>
     </Compile>

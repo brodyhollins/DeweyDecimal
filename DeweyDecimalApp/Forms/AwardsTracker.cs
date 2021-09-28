@@ -15,6 +15,36 @@ namespace DeweyDecimalApp.Forms
         public AwardsTracker()
         {
             InitializeComponent();
+
+            //Setting values for Complete your first task
+            if (Awards.firstTaskCompletedAward)
+            {
+                completeAwardPb.Value = 100;
+                completeAwardLb.Text = "1/1";
+            }
+
+            //Setting values for Win streak
+            if (Awards.winStreakAward > 0)
+            {
+                winStreakAwardPb.Value = (Awards.winStreakAward * 33) + 1;
+                winStreakAwardLb.Text = String.Concat(Awards.winStreakAward.ToString(), "/3");
+            }
+
+            //Setting values for Beat the clock
+            /*if (Awards.winStreakAward > 0)
+            {
+                winStreakAwardPb.Value = (Awards.winStreakAward * 33) + 1;
+                winStreakAwardLb.Text = String.Concat(Awards.winStreakAward.ToString(), "/3");
+            }*/
+
+            //Setting values for Determined
+            if (Awards.determindedAward <= 10)
+            {
+                determinedAwardPb.Value = Awards.determindedAward * 10;
+                determinedAwardLb.Text = String.Concat(Awards.determindedAward.ToString(), "/10");
+            }
+
+
         }
 
         private void BackBtn_Click(object sender, EventArgs e)

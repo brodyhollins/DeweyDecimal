@@ -138,10 +138,38 @@ namespace DeweyDecimalApp.Forms
         {
             if (correctOrder.SequenceEqual(UserSortedCallNumbers.Items.Cast<string>().ToList()))
             {
+                //Setting the 'Complete your first task' award to true if false on first time completed
+                if (!Awards.firstTaskCompletedAward)
+                {
+                    Awards.firstTaskCompletedAward = true;
+                }
+
+                //Increment win streak by 1
+                if (Awards.winStreakAward < 3)
+                {
+                    Awards.winStreakAward++;
+                }
+
+                //Increment task attempted by 1
+                if (Awards.determindedAward < 10)
+                {
+                    Awards.determindedAward++;
+                }
                 Console.WriteLine("Correct Order!");
             }
             else
             {
+                //Reset win streak when user has lost before the 3rd attempt
+                if(Awards.winStreakAward < 3)
+                {
+                    Awards.winStreakAward = 0;
+                }
+                //Increment task attempted by 1
+                if (Awards.determindedAward < 10)
+                {
+                    Awards.determindedAward++;
+                }
+
                 Console.WriteLine("Wrong Order!");
             }
         }

@@ -15,6 +15,9 @@ namespace DeweyDecimalApp.Forms
         public TaskSelection()
         {
             InitializeComponent();
+            Console.WriteLine("First " + Awards.firstTaskCompletedAward);
+            Console.WriteLine("Win " + Awards.winStreakAward);
+            Console.WriteLine("Det " + Awards.determindedAward);
         }
 
         private void ReplacingBooksBtn_Click(object sender, EventArgs e)
