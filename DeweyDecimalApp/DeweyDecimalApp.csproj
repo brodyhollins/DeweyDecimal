@@ -74,6 +74,12 @@
     <Compile Include="Forms\ReplacingBooksTask.Designer.cs">
       <DependentUpon>ReplacingBooksTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TaskCompletedMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TaskCompletedMessageBox.Designer.cs">
+      <DependentUpon>TaskCompletedMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TaskSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReplacingBooksTask.resx">
       <DependentUpon>ReplacingBooksTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TaskCompletedMessageBox.resx">
+      <DependentUpon>TaskCompletedMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TaskSelection.resx">
       <DependentUpon>TaskSelection.cs</DependentUpon>

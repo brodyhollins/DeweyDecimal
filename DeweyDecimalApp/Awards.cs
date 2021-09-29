@@ -9,8 +9,8 @@ namespace DeweyDecimalApp
     public class Awards
     {
         public static Boolean firstTaskCompletedAward = false;
+        public static Boolean beatClockAward = false;
         public static int winStreakAward = 0;
-        public static int beatClockAward = 0;
         public static int determindedAward = 0;
     }
 }

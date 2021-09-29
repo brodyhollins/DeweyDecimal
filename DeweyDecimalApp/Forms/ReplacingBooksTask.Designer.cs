@@ -35,6 +35,10 @@
             this.UserSortedCallNumbers = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.RestartTaskBtn = new System.Windows.Forms.Button();
+            this.StartTaskBtn = new System.Windows.Forms.Button();
+            this.TimerValueLb = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -60,6 +64,7 @@
             // SubmitBtn
             // 
             this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.SubmitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SubmitBtn.FlatAppearance.BorderSize = 0;
             this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitBtn.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,7 +113,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.RestartTaskBtn);
+            this.panel2.Controls.Add(this.StartTaskBtn);
+            this.panel2.Controls.Add(this.TimerValueLb);
             this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.UserSortedCallNumbers);
             this.panel2.Controls.Add(this.SubmitBtn);
             this.panel2.Controls.Add(this.label2);
@@ -116,6 +125,64 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1195, 401);
             this.panel2.TabIndex = 5;
+            // 
+            // RestartTaskBtn
+            // 
+            this.RestartTaskBtn.BackColor = System.Drawing.Color.White;
+            this.RestartTaskBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RestartTaskBtn.FlatAppearance.BorderSize = 0;
+            this.RestartTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RestartTaskBtn.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RestartTaskBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.RestartTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RestartTaskBtn.Location = new System.Drawing.Point(844, 11);
+            this.RestartTaskBtn.Name = "RestartTaskBtn";
+            this.RestartTaskBtn.Size = new System.Drawing.Size(110, 26);
+            this.RestartTaskBtn.TabIndex = 15;
+            this.RestartTaskBtn.Text = "Restart";
+            this.RestartTaskBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.RestartTaskBtn.UseVisualStyleBackColor = false;
+            this.RestartTaskBtn.Click += new System.EventHandler(this.RestartTaskBtn_Click);
+            // 
+            // StartTaskBtn
+            // 
+            this.StartTaskBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.StartTaskBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StartTaskBtn.FlatAppearance.BorderSize = 0;
+            this.StartTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartTaskBtn.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartTaskBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.StartTaskBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StartTaskBtn.Location = new System.Drawing.Point(960, 11);
+            this.StartTaskBtn.Name = "StartTaskBtn";
+            this.StartTaskBtn.Size = new System.Drawing.Size(110, 26);
+            this.StartTaskBtn.TabIndex = 14;
+            this.StartTaskBtn.Text = "Start";
+            this.StartTaskBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.StartTaskBtn.UseVisualStyleBackColor = false;
+            this.StartTaskBtn.Click += new System.EventHandler(this.StartTaskBtn_Click);
+            // 
+            // TimerValueLb
+            // 
+            this.TimerValueLb.AutoSize = true;
+            this.TimerValueLb.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.TimerValueLb.ForeColor = System.Drawing.Color.White;
+            this.TimerValueLb.Location = new System.Drawing.Point(1149, 11);
+            this.TimerValueLb.Name = "TimerValueLb";
+            this.TimerValueLb.Size = new System.Drawing.Size(30, 21);
+            this.TimerValueLb.TabIndex = 13;
+            this.TimerValueLb.Text = "0s";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1086, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 21);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Timer:";
             // 
             // label1
             // 
@@ -228,5 +295,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Timer ReplacingBooksTimer;
+        private System.Windows.Forms.Label TimerValueLb;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button RestartTaskBtn;
+        private System.Windows.Forms.Button StartTaskBtn;
     }
 }

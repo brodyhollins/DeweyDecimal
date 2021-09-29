@@ -255,9 +255,9 @@
             this.label10.Location = new System.Drawing.Point(85, 35);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
-            this.label10.Size = new System.Drawing.Size(305, 30);
+            this.label10.Size = new System.Drawing.Size(304, 30);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Successfully complete the task in 10s or less";
+            this.label10.Text = "Successfully complete the task in 15s or less";
             // 
             // label11
             // 

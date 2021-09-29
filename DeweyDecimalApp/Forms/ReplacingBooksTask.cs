@@ -24,34 +24,7 @@ namespace DeweyDecimalApp.Forms
         public ReplacingBooksTask()
         {
             InitializeComponent();
-
-            GenerateCallNumbers randomCallNumbers = new GenerateCallNumbers();
-            SortCallNumbers sortList = new SortCallNumbers();
-            randomDewey = randomCallNumbers.RandomCallNumbersGenerator();
-            UserSortedCallNumbers.Items.AddRange(randomDewey.ToArray());
-
-            int len = randomDewey.Count();
-            /*for(int x =0; x < randomDewey.Count(); x++)
-            {
-                Console.WriteLine(randomDewey[x].Split(' ')[0].Contains(".") ? randomDewey[x].Split(' ')[0].Split('.')[1].PadRight(5, '0') : "00000");
-            }*/
-            correctOrder = sortList.InsertionSort(randomDewey, len);
-            /*correctOrder = test.ToList();
-            correctOrder.Sort();*/
-
-            // Turn off the scrollbar.
-            UserSortedCallNumbers.ScrollAlwaysVisible = false;
-
-            // Set the DrawMode property to the OwnerDrawVariable value. 
-            // This means the MeasureItem and DrawItem events must be 
-            // handled.
-            UserSortedCallNumbers.MeasureItem +=
-                new MeasureItemEventHandler(UserSortedCallNumbers_MeasureItem);
-            UserSortedCallNumbers.DrawItem += new DrawItemEventHandler(UserSortedCallNumbers_DrawItem);
-
-            UserSortedCallNumbers.Refresh();
-
-            ReplacingBooksTimer.Start();
+            SubmitBtn.Enabled = false;
         }
 
         // Handle the DrawItem event for an owner-drawn ListBox.
@@ -171,11 +144,19 @@ namespace DeweyDecimalApp.Forms
                 {
                     Awards.determindedAward++;
                 }
-                Console.WriteLine("Correct Order! With a time of: " + ticker);
-                foreach(var i in correctOrder)
+
+                //Setting beat the clock award to true
+                if (!Awards.beatClockAward && ticker <= 15)
                 {
-                    Console.WriteLine(i);
+                    Awards.beatClockAward = true;
                 }
+
+                string status = "Well Done!";
+                string message = "You sorted the books correctly.";
+                string time = "Task Completed in: " + ticker + " seconds";
+
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time);
+                taskCompletedMessageBox.Show();
             }
             else
             {
@@ -190,11 +171,12 @@ namespace DeweyDecimalApp.Forms
                     Awards.determindedAward++;
                 }
 
-                Console.WriteLine("Wrong Order! With a time of: " + ticker);
-                foreach (var i in correctOrder)
-                {
-                    Console.WriteLine(i);
-                }
+                string status = "Good Try!";
+                string message = "You failed to sorted the books correctly. \nClick 'Retry Task' to keep on trying!";
+                string time = ticker + " seconds";
+
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time);
+                taskCompletedMessageBox.Show();
             }
         }
 
@@ -213,6 +195,44 @@ namespace DeweyDecimalApp.Forms
         private void ReplacingBooksTimer_Tick(object sender, EventArgs e)
         {
             ticker++;
+            TimerValueLb.Text = ticker.ToString() + "s";
+        }
+
+        private void StartTaskBtn_Click(object sender, EventArgs e)
+        {
+            InitTask();
+            StartTaskBtn.Enabled = false;
+        }
+
+        private void RestartTaskBtn_Click(object sender, EventArgs e)
+        {
+            InitTask();
+        }
+        private void InitTask()
+        {
+            //Reset values
+            randomDewey.Clear();
+            UserSortedCallNumbers.Items.Clear();
+            ReplacingBooksTimer.Stop();
+            ticker = 0;
+            SubmitBtn.Enabled = true;
+
+            GenerateCallNumbers randomCallNumbers = new GenerateCallNumbers();
+            SortCallNumbers sortList = new SortCallNumbers();
+            randomDewey = randomCallNumbers.RandomCallNumbersGenerator();
+            UserSortedCallNumbers.Items.AddRange(randomDewey.ToArray());
+
+            int len = randomDewey.Count();
+            
+            correctOrder = sortList.InsertionSort(randomDewey, len);
+            
+            UserSortedCallNumbers.MeasureItem +=
+                new MeasureItemEventHandler(UserSortedCallNumbers_MeasureItem);
+            UserSortedCallNumbers.DrawItem += new DrawItemEventHandler(UserSortedCallNumbers_DrawItem);
+
+            UserSortedCallNumbers.Refresh();
+
+            ReplacingBooksTimer.Start();
         }
     }
 }

@@ -31,11 +31,11 @@ namespace DeweyDecimalApp.Forms
             }
 
             //Setting values for Beat the clock
-            /*if (Awards.winStreakAward > 0)
+            if (Awards.beatClockAward)
             {
-                winStreakAwardPb.Value = (Awards.winStreakAward * 33) + 1;
-                winStreakAwardLb.Text = String.Concat(Awards.winStreakAward.ToString(), "/3");
-            }*/
+                beatClockAwardPb.Value = 100;
+                beatClockAwardLb.Text = "1/1";
+            }
 
             //Setting values for Determined
             if (Awards.determindedAward <= 10)
