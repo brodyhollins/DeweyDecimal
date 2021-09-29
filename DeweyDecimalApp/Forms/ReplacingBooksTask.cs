@@ -18,16 +18,21 @@ namespace DeweyDecimalApp.Forms
         List<string> correctOrder = new List<string>();
         int index = 0;
 
+        string[] test = new string[] { "595.0 ABC", "596.6 BCA", "595.01 BBA", "595.2 ABC", "595.9287 ABC", "597.0 BCA", "595.5 ABC", "595.0001 CCB", "595.408 ABC", "595.8 ABC" };
+
         public ReplacingBooksTask()
         {
             InitializeComponent();
 
             GenerateCallNumbers randomCallNumbers = new GenerateCallNumbers();
+            SortCallNumbers sortList = new SortCallNumbers();
             randomDewey = randomCallNumbers.RandomCallNumbersGenerator();
             UserSortedCallNumbers.Items.AddRange(randomDewey.ToArray());
 
-            correctOrder = randomDewey;
-            correctOrder.Sort();
+            int len = randomDewey.Count();
+            correctOrder = sortList.InsertionSort(randomDewey, len);
+            /*correctOrder = test.ToList();
+            correctOrder.Sort();*/
 
             // Turn off the scrollbar.
             UserSortedCallNumbers.ScrollAlwaysVisible = false;
@@ -64,8 +69,11 @@ namespace DeweyDecimalApp.Forms
             e.Graphics.FillRectangle(Brushes.White, new Rectangle(e.Bounds.X + 12, e.Bounds.Bottom - 75, 90, 65));
 
             // Draw the text in the item.
-            e.Graphics.DrawString(UserSortedCallNumbers.Items[e.Index].ToString().Split(' ')[0],
-                new Font("Red Hat Display", 12, FontStyle.Bold), Brushes.Black, e.Bounds.X + 12, e.Bounds.Height - 65);
+            e.Graphics.DrawString( UserSortedCallNumbers.Items[e.Index].ToString().Split(' ')[0],
+               new Font("Red Hat Display", 12, FontStyle.Bold), Brushes.Black, e.Bounds.X + 12, e.Bounds.Height - 65);
+
+            /*e.Graphics.DrawString((UserSortedCallNumbers.Items[e.Index].ToString().Split(' ')[0].Split('.')[1].PadRight(5, '0')),
+                new Font("Red Hat Display", 12, FontStyle.Bold), Brushes.Black, e.Bounds.X + 12, e.Bounds.Height - 20);*/
 
             e.Graphics.DrawString(UserSortedCallNumbers.Items[e.Index].ToString().Split(' ')[1],
                 new Font("Red Hat Display", 12, FontStyle.Bold), Brushes.Black, e.Bounds.X + 12, e.Bounds.Height - 40);
@@ -156,6 +164,10 @@ namespace DeweyDecimalApp.Forms
                     Awards.determindedAward++;
                 }
                 Console.WriteLine("Correct Order!");
+                foreach(var i in correctOrder)
+                {
+                    Console.WriteLine(i);
+                }
             }
             else
             {
@@ -171,6 +183,10 @@ namespace DeweyDecimalApp.Forms
                 }
 
                 Console.WriteLine("Wrong Order!");
+                foreach (var i in correctOrder)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
 
