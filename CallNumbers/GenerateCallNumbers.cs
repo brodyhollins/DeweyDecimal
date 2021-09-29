@@ -24,7 +24,7 @@ namespace CallNumbers
                 deweyDecimal = random.Next(0, 1000).ToString("000");
 
                 string afterDecimal = "";
-                for (int x = 0; x < random.Next(0, 5); x++)
+                for (int x = 0; x < random.Next(0, 6); x++)
                 {
                     afterDecimal = string.Concat(afterDecimal, random.Next(0, 9).ToString());
                 }
