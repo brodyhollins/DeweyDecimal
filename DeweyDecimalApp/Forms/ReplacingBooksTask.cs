@@ -17,8 +17,9 @@ namespace DeweyDecimalApp.Forms
         List<string> randomDewey = new List<string>();
         List<string> correctOrder = new List<string>();
         int index = 0;
+        private int ticker;
 
-        string[] test = new string[] { "595.0 ABC", "596.6 BCA", "595.01 BBA", "595.2 ABC", "595.9287 ABC", "597.0 BCA", "595.5 ABC", "595.0001 CCB", "595.408 ABC", "595.8 ABC" };
+        string[] test = new string[] { "595 ABC", "596.6 BCA", "595.01 BBA", "595.2 ABC", "595.9287 ABC", "597 BCA", "595.5 ABC", "595.0001 CCB", "595.408 ABC", "595.8 ABC" };
 
         public ReplacingBooksTask()
         {
@@ -30,6 +31,10 @@ namespace DeweyDecimalApp.Forms
             UserSortedCallNumbers.Items.AddRange(randomDewey.ToArray());
 
             int len = randomDewey.Count();
+            /*for(int x =0; x < randomDewey.Count(); x++)
+            {
+                Console.WriteLine(randomDewey[x].Split(' ')[0].Contains(".") ? randomDewey[x].Split(' ')[0].Split('.')[1].PadRight(5, '0') : "00000");
+            }*/
             correctOrder = sortList.InsertionSort(randomDewey, len);
             /*correctOrder = test.ToList();
             correctOrder.Sort();*/
@@ -45,6 +50,8 @@ namespace DeweyDecimalApp.Forms
             UserSortedCallNumbers.DrawItem += new DrawItemEventHandler(UserSortedCallNumbers_DrawItem);
 
             UserSortedCallNumbers.Refresh();
+
+            ReplacingBooksTimer.Start();
         }
 
         // Handle the DrawItem event for an owner-drawn ListBox.
@@ -144,6 +151,7 @@ namespace DeweyDecimalApp.Forms
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
+            ReplacingBooksTimer.Stop();
             if (correctOrder.SequenceEqual(UserSortedCallNumbers.Items.Cast<string>().ToList()))
             {
                 //Setting the 'Complete your first task' award to true if false on first time completed
@@ -163,7 +171,7 @@ namespace DeweyDecimalApp.Forms
                 {
                     Awards.determindedAward++;
                 }
-                Console.WriteLine("Correct Order!");
+                Console.WriteLine("Correct Order! With a time of: " + ticker);
                 foreach(var i in correctOrder)
                 {
                     Console.WriteLine(i);
@@ -182,7 +190,7 @@ namespace DeweyDecimalApp.Forms
                     Awards.determindedAward++;
                 }
 
-                Console.WriteLine("Wrong Order!");
+                Console.WriteLine("Wrong Order! With a time of: " + ticker);
                 foreach (var i in correctOrder)
                 {
                     Console.WriteLine(i);
@@ -200,6 +208,11 @@ namespace DeweyDecimalApp.Forms
             TaskSelection taskSelection = new TaskSelection();
             taskSelection.ShowDialog();
             this.Close();
+        }
+
+        private void ReplacingBooksTimer_Tick(object sender, EventArgs e)
+        {
+            ticker++;
         }
     }
 }

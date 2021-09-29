@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReplacingBooksTask));
             this.label2 = new System.Windows.Forms.Label();
             this.SubmitBtn = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
+            this.ReplacingBooksTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -182,6 +184,11 @@
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
+            // ReplacingBooksTimer
+            // 
+            this.ReplacingBooksTimer.Interval = 1000;
+            this.ReplacingBooksTimer.Tick += new System.EventHandler(this.ReplacingBooksTimer_Tick);
+            // 
             // ReplacingBooksTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +227,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BackBtn;
+        private System.Windows.Forms.Timer ReplacingBooksTimer;
     }
 }

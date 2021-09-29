@@ -21,17 +21,24 @@ namespace CallNumbers
                 string deweyDecimal = "";
 
                 //3 Digit Main Subject Classes
-                deweyDecimal = string.Concat(deweyDecimal, random.Next(0, 900).ToString("000"), ".");
+                deweyDecimal = random.Next(0, 1000).ToString("000");
 
-                string afterDecimal =
-                      random.Next(0, 9).ToString()
-                    + random.Next(0, 9).ToString()
-                    + random.Next(0, 9).ToString()
-                    + random.Next(0, 9).ToString()
-                    + random.Next(0, 9).ToString();
+                string afterDecimal = "";
+                for (int x = 0; x < random.Next(0, 5); x++)
+                {
+                    afterDecimal = string.Concat(afterDecimal, random.Next(0, 9).ToString());
+                }
 
                 //After decimal point
-                deweyDecimal = string.Concat(deweyDecimal, random.Next(0, Int32.Parse(afterDecimal)).ToString());
+                if(afterDecimal == "")
+                {
+                    deweyDecimal = string.Concat(deweyDecimal, afterDecimal);
+                }
+                else
+                {
+                    deweyDecimal = string.Concat(deweyDecimal, ".", afterDecimal);
+                }
+                
 
                 //Author 3 letter of surname
                 deweyDecimal = string.Concat(deweyDecimal, " ", RandomString(3));

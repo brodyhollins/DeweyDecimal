@@ -17,12 +17,12 @@ namespace CallNumbers
                 for (j = i - 1; j >= 0 && ins != 1;)
                 {
                     //Get the 3 digit number for both items
-                    string threeItem = item.Split('.')[0];
-                    string threeData = data[j].Split('.')[0];
+                    string threeItem = item.Contains(".") ? item.Split('.')[0] : item.Split(' ')[0];
+                    string threeData = data[j].Contains(".") ? data[j].Split('.')[0] : data[j].Split(' ')[0];
 
                     //Get the decimal number after the . and put 0 to the right until 5 digits
-                    string fiveItem = item.Split(' ')[0].Split('.')[1].PadRight(5, '0');
-                    string fiveData = data[j].Split(' ')[0].Split('.')[1].PadRight(5, '0');
+                    string fiveItem = item.Split(' ')[0].Contains(".") ? item.Split(' ')[0].Split('.')[1].PadRight(5, '0') : "0".PadRight(5, '0');
+                    string fiveData = data[j].Split(' ')[0].Contains(".") ? data[j].Split(' ')[0].Split('.')[1].PadRight(5, '0')  : "0".PadRight(5, '0');
 
                     //Get the 3 letter string for author surname
                     string surnameItem = item.Split(' ')[1];
@@ -44,7 +44,8 @@ namespace CallNumbers
                             j--;
                             data[j + 1] = item;
                         }
-                        else {
+                        else
+                        {
                             ins = 1;
                         }
                     }
