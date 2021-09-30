@@ -123,7 +123,7 @@ namespace DeweyDecimalApp.Forms
                 // Custom text for the Message Box Popup for being correct
                 string status = "Well Done!";
                 string message = "You sorted the books correctly.";
-                string time = "Task Completed in: " + ticker + " seconds";
+                string time = ticker + " seconds";
 
                 // Open custom messagebox
                 this.Hide();

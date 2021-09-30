@@ -10,6 +10,7 @@ namespace CallNumbers
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         ///    Insertion Sort Algorithm used to sort List
+        ///    Reason: Speed won't be a concern because of the list size and it is a stable algorithm
         /// </summary>
         public List<string> InsertionSort(List<string> callNumbers, int length)
         {
