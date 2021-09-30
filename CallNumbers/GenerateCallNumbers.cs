@@ -7,7 +7,12 @@ namespace CallNumbers
 {
     public class GenerateCallNumbers
     {
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///    Used to obtain digits and letters for the call numbers
+        /// </summary>
         public Random random = new Random();
+        
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         ///     Generate random dewey decimal numbers
@@ -18,18 +23,21 @@ namespace CallNumbers
 
             for (int i = 0; i < 10; i++)
             {
+                // 3 digit number before the '.' - category
                 string deweyDecimal = "";
-
-                //3 Digit Main Subject Classes
                 deweyDecimal = random.Next(0, 1000).ToString("000");
 
+                // digits after the '.' - sub categories
                 string afterDecimal = "";
+
+                // Handle how many digits between 0 and 5 to randomize after the .
                 for (int x = 0; x < random.Next(0, 6); x++)
                 {
-                    afterDecimal = string.Concat(afterDecimal, random.Next(0, 9).ToString());
+                    // Randomize each digit between 0 and 9
+                    afterDecimal = string.Concat(afterDecimal, random.Next(0, 10).ToString());
                 }
 
-                //After decimal point
+                // Concate a dot between category and sub category if there is a sub category
                 if(afterDecimal == "")
                 {
                     deweyDecimal = string.Concat(deweyDecimal, afterDecimal);
@@ -40,8 +48,8 @@ namespace CallNumbers
                 }
                 
 
-                //Author 3 letter of surname
-                deweyDecimal = string.Concat(deweyDecimal, " ", RandomString(3));
+                // Handle authors 3 letter surname and concat to the digits
+                deweyDecimal = string.Concat(deweyDecimal, " ", RandomStringGenerator(3));
 
                 deweyDecimals.Add(deweyDecimal);
             }
@@ -51,13 +59,14 @@ namespace CallNumbers
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Method for random string generation
+        ///     Method for random string generation for 3 letter author surname
         /// </summary>
-        public string RandomString(int length)
+        public string RandomStringGenerator(int length)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(x => x[random.Next(x.Length)]).ToArray());
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(letters, length)
+              .Select(letter => letter[random.Next(letter.Length)]).ToArray());
         }
     }
 }
+//------------------------------------------...ooo000 END OF FILE 000ooo...-------------------------------------------------//

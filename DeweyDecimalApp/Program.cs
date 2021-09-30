@@ -9,6 +9,7 @@ namespace DeweyDecimalApp
 {
     static class Program
     {
+        /// //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -21,3 +22,4 @@ namespace DeweyDecimalApp
         }
     }
 }
+//------------------------------------------...ooo000 END OF FILE 000ooo...-------------------------------------------------//

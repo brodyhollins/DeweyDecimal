@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DeweyDecimalApp
 {
+    //----------------------------------------------------------------------------------------------------------------//
+    /// <summary>
+    /// Class to hold our award progress
+    /// </summary>
     public class Awards
     {
         public static Boolean firstTaskCompletedAward = false;
@@ -14,3 +18,4 @@ namespace DeweyDecimalApp
         public static int determindedAward = 0;
     }
 }
+//------------------------------------------...ooo000 END OF FILE 000ooo...-------------------------------------------------//

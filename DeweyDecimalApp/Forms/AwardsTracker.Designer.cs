@@ -583,6 +583,7 @@
             this.Name = "AwardsTracker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BadgeTracker";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AwardsTracker_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();

@@ -194,6 +194,7 @@
             this.Name = "TaskSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskSelection";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TaskSelection_FormClosed);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

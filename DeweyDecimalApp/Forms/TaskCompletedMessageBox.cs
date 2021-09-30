@@ -12,59 +12,61 @@ namespace DeweyDecimalApp.Forms
 {
     public partial class TaskCompletedMessageBox : Form
     {
-        List<Form> openForms = new List<Form>();
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Constructor, takes in paramaters to change text
+        /// </summary>
         public TaskCompletedMessageBox(string status, string message, string time)
         {
-            foreach (Form f in Application.OpenForms)
-                openForms.Add(f);
-
             InitializeComponent();
             StatusMessageLb.Text = status;
             MessageLb.Text = message;
             TimeTakenLb.Text = time;
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Takes user back to the 'Replacing Books Form'
+        /// </summary>
         private void RetryTaskBtn_Click(object sender, EventArgs e)
         {
-            HideForms();
+            this.Hide();
             ReplacingBooksTask replaceBooks = new ReplacingBooksTask();
-            replaceBooks.ShowDialog();
-            CloseForms();
+            replaceBooks.Show();
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Takes user back to the 'Task Selection Form'
+        /// </summary>
         private void MainMenuBtn_Click(object sender, EventArgs e)
         {
-            HideForms();
+            this.Hide();
             TaskSelection taskSelection = new TaskSelection();
-            taskSelection.ShowDialog();
-            CloseForms();
+            taskSelection.Show();
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Takes user back to the 'Awards Tracker Form'
+        /// </summary>
         private void AwardsBtn_Click(object sender, EventArgs e)
         {
-
-            HideForms();
+            this.Hide();
             AwardsTracker awardsTracker = new AwardsTracker();
-            awardsTracker.ShowDialog();
-            CloseForms();
+            awardsTracker.Show();
         }
 
-        private void HideForms()
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Takes user back to the 'Task Selection Form' on form close
+        /// </summary>
+        private void TaskCompletedMessageBox_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            foreach (Form f in openForms)
-            {
-                f.Hide();
-            }
-
-        }
-        private void CloseForms()
-        {
-            foreach (Form f in openForms)
-            {
-                f.Close();
-            }
-            this.Close();
+            TaskSelection taskSelection = new TaskSelection();
+            taskSelection.Show();
         }
     }
 }
+//------------------------------------------...ooo000 END OF FILE 000ooo...-------------------------------------------------//

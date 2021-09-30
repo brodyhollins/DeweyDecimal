@@ -46,6 +46,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
             this.ReplacingBooksTimer = new System.Windows.Forms.Timer(this.components);
+            this.HowToPlayTt = new System.Windows.Forms.ToolTip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -256,12 +259,44 @@
             this.ReplacingBooksTimer.Interval = 1000;
             this.ReplacingBooksTimer.Tick += new System.EventHandler(this.ReplacingBooksTimer_Tick);
             // 
+            // HowToPlayTt
+            // 
+            this.HowToPlayTt.AutoPopDelay = 20000;
+            this.HowToPlayTt.InitialDelay = 0;
+            this.HowToPlayTt.ReshowDelay = 100;
+            this.HowToPlayTt.ShowAlways = true;
+            this.HowToPlayTt.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.HowToPlayTt.ToolTipTitle = "How to play";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(1081, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 21);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "How to play ?";
+            this.HowToPlayTt.SetToolTip(this.label5, "Click the \'Start\' button to begin.\r\nClick and Drag the Boxes and align them from " +
+        "\r\nleft(lowest) to right(highest).");
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
+            this.panel6.Location = new System.Drawing.Point(19, 92);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1195, 1);
+            this.panel6.TabIndex = 18;
+            // 
             // ReplacingBooksTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1234, 511);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -274,6 +309,7 @@
             this.Name = "ReplacingBooksTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReplacingBooksTask";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReplacingBooksTask_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -299,5 +335,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button RestartTaskBtn;
         private System.Windows.Forms.Button StartTaskBtn;
+        private System.Windows.Forms.ToolTip HowToPlayTt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel6;
     }
 }
