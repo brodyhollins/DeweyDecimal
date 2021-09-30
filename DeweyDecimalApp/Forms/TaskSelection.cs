@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DeweyDecimalApp.Forms
@@ -21,8 +22,9 @@ namespace DeweyDecimalApp.Forms
         private void ReplacingBooksBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ReplacingBooksTask replacingBooksTask = new ReplacingBooksTask();
-            replacingBooksTask.Show();
+            ReplacingBooksTask replaceBooks = new ReplacingBooksTask();
+            replaceBooks.ShowDialog();
+            this.Close();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -33,12 +35,17 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             AwardsTracker awardsTracker = new AwardsTracker();
-            awardsTracker.Show();
+            awardsTracker.ShowDialog();
+            this.Close();
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///    Clsoe the thread on application quit
+        /// </summary>
         private void TaskSelection_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.ExitThread();
         }
     }
 }

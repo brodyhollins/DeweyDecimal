@@ -151,7 +151,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 40);
+            this.panel1.Size = new System.Drawing.Size(728, 48);
             this.panel1.TabIndex = 13;
             // 
             // BadgesBtn
@@ -168,8 +168,8 @@
             this.BadgesBtn.Location = new System.Drawing.Point(613, 0);
             this.BadgesBtn.Name = "BadgesBtn";
             this.BadgesBtn.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.BadgesBtn.Size = new System.Drawing.Size(115, 40);
-            this.BadgesBtn.TabIndex = 1;
+            this.BadgesBtn.Size = new System.Drawing.Size(115, 48);
+            this.BadgesBtn.TabIndex = 2;
             this.BadgesBtn.Text = "Awards";
             this.BadgesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BadgesBtn.UseVisualStyleBackColor = true;

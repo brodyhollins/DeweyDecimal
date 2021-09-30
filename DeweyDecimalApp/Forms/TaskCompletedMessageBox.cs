@@ -32,7 +32,8 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             ReplacingBooksTask replaceBooks = new ReplacingBooksTask();
-            replaceBooks.Show();
+            replaceBooks.ShowDialog();
+            this.Close();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -43,7 +44,8 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             TaskSelection taskSelection = new TaskSelection();
-            taskSelection.Show();
+            taskSelection.ShowDialog();
+            this.Close();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -54,7 +56,8 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             AwardsTracker awardsTracker = new AwardsTracker();
-            awardsTracker.Show();
+            awardsTracker.ShowDialog();
+            this.Close();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -64,8 +67,9 @@ namespace DeweyDecimalApp.Forms
         private void TaskCompletedMessageBox_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            TaskSelection taskSelection = new TaskSelection();
-            taskSelection.Show();
+            TaskSelection taskSelectionClose = new TaskSelection();
+            taskSelectionClose.ShowDialog();
+            this.Close();
         }
     }
 }

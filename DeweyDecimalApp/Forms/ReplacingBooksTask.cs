@@ -282,7 +282,8 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             TaskSelection taskSelection = new TaskSelection();
-            taskSelection.Show();
+            taskSelection.ShowDialog();
+            this.Close();
         }
     }
 }

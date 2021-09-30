@@ -56,8 +56,9 @@ namespace DeweyDecimalApp.Forms
         private void BackBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TaskSelection taskSelection = new TaskSelection();
-            taskSelection.Show();
+            TaskSelection taskSelectionBack = new TaskSelection();
+            taskSelectionBack.ShowDialog();
+            this.Close();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -68,7 +69,8 @@ namespace DeweyDecimalApp.Forms
         {
             this.Hide();
             TaskSelection taskSelection = new TaskSelection();
-            taskSelection.Show();
+            taskSelection.ShowDialog();
+            this.Close();
         }
     }
 }
