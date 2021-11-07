@@ -29,6 +29,18 @@ namespace DeweyDecimalApp.Forms
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
+        ///     Open the 'Identifying Areas Form'
+        /// </summary>
+        private void IdentifyingAreasBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            IdentifyingAreasTask identifyingAreas = new IdentifyingAreasTask();
+            identifyingAreas.ShowDialog();
+            this.Close();
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
         ///     Open the 'Awards Tracker Form'
         /// </summary>
         private void BadgesBtn_Click(object sender, EventArgs e)

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskSelection));
             this.ReplacingBooksBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.IdentifyingAreasBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,33 +60,34 @@
             this.ReplacingBooksBtn.UseVisualStyleBackColor = false;
             this.ReplacingBooksBtn.Click += new System.EventHandler(this.ReplacingBooksBtn_Click);
             // 
-            // button1
+            // IdentifyingAreasBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.No;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(247, 305);
-            this.button1.MaximumSize = new System.Drawing.Size(275, 75);
-            this.button1.MinimumSize = new System.Drawing.Size(275, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(275, 75);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Identifying Areas";
-            this.button1.UseVisualStyleBackColor = false;
+            this.IdentifyingAreasBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
+            this.IdentifyingAreasBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IdentifyingAreasBtn.FlatAppearance.BorderSize = 0;
+            this.IdentifyingAreasBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IdentifyingAreasBtn.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdentifyingAreasBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.IdentifyingAreasBtn.Location = new System.Drawing.Point(247, 305);
+            this.IdentifyingAreasBtn.MaximumSize = new System.Drawing.Size(275, 75);
+            this.IdentifyingAreasBtn.MinimumSize = new System.Drawing.Size(275, 75);
+            this.IdentifyingAreasBtn.Name = "IdentifyingAreasBtn";
+            this.IdentifyingAreasBtn.Size = new System.Drawing.Size(275, 75);
+            this.IdentifyingAreasBtn.TabIndex = 2;
+            this.IdentifyingAreasBtn.Text = "Identifying Areas";
+            this.IdentifyingAreasBtn.UseVisualStyleBackColor = false;
+            this.IdentifyingAreasBtn.Click += new System.EventHandler(this.IdentifyingAreasBtn_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.No;
-            this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.button2.Location = new System.Drawing.Point(247, 410);
             this.button2.MaximumSize = new System.Drawing.Size(275, 75);
             this.button2.MinimumSize = new System.Drawing.Size(275, 75);
@@ -188,7 +189,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.IdentifyingAreasBtn);
             this.Controls.Add(this.ReplacingBooksBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TaskSelection";
@@ -204,7 +205,7 @@
         #endregion
 
         private System.Windows.Forms.Button ReplacingBooksBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button IdentifyingAreasBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
