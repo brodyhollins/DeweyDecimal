@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Awards.cs" />
+    <Compile Include="CallNumbersDescriptions.cs" />
     <Compile Include="Forms\AwardsTracker.cs">
       <SubType>Form</SubType>
     </Compile>

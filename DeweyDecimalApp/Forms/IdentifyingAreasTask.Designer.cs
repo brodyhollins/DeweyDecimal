@@ -110,6 +110,7 @@
             this.BackBtn.TabIndex = 0;
             this.BackBtn.Text = "Back";
             this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // panel2
             // 
