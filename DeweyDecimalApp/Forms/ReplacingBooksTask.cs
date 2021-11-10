@@ -127,7 +127,7 @@ namespace DeweyDecimalApp.Forms
 
                 // Open custom messagebox
                 this.Hide();
-                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time);
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "replacingBooks");
                 taskCompletedMessageBox.ShowDialog();
                 this.Close();
             }
@@ -151,7 +151,7 @@ namespace DeweyDecimalApp.Forms
 
                 // Open custom messagebox
                 this.Hide();
-                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time);
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "replacingBooks");
                 taskCompletedMessageBox.ShowDialog();
                 this.Close();
             }

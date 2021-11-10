@@ -37,7 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SubmitBtn = new System.Windows.Forms.Button();
             this.rightColumnLb = new System.Windows.Forms.ListBox();
             this.leftColumnLb = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -117,7 +117,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.SubmitBtn);
             this.panel2.Controls.Add(this.rightColumnLb);
             this.panel2.Controls.Add(this.leftColumnLb);
             this.panel2.Controls.Add(this.label2);
@@ -126,15 +126,21 @@
             this.panel2.Size = new System.Drawing.Size(695, 595);
             this.panel2.TabIndex = 19;
             // 
-            // button1
+            // SubmitBtn
             // 
-            this.button1.Location = new System.Drawing.Point(578, 542);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.SubmitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SubmitBtn.FlatAppearance.BorderSize = 0;
+            this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitBtn.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.SubmitBtn.Location = new System.Drawing.Point(540, 541);
+            this.SubmitBtn.Name = "SubmitBtn";
+            this.SubmitBtn.Size = new System.Drawing.Size(140, 38);
+            this.SubmitBtn.TabIndex = 11;
+            this.SubmitBtn.Text = "Submit";
+            this.SubmitBtn.UseVisualStyleBackColor = false;
+            this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
             // rightColumnLb
             // 
@@ -152,11 +158,11 @@
             "E",
             "F",
             "G"});
-            this.rightColumnLb.Location = new System.Drawing.Point(350, 48);
+            this.rightColumnLb.Location = new System.Drawing.Point(388, 48);
             this.rightColumnLb.Name = "rightColumnLb";
             this.rightColumnLb.Size = new System.Drawing.Size(292, 450);
             this.rightColumnLb.TabIndex = 9;
-            this.rightColumnLb.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.rightColumnLb.SelectedIndexChanged += new System.EventHandler(this.RightColumn_SelectedIndexChanged);
             // 
             // leftColumnLb
             // 
@@ -171,11 +177,11 @@
             "2",
             "3",
             "4"});
-            this.leftColumnLb.Location = new System.Drawing.Point(31, 48);
+            this.leftColumnLb.Location = new System.Drawing.Point(14, 48);
             this.leftColumnLb.Name = "leftColumnLb";
             this.leftColumnLb.Size = new System.Drawing.Size(269, 250);
             this.leftColumnLb.TabIndex = 8;
-            this.leftColumnLb.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.leftColumnLb.SelectedIndexChanged += new System.EventHandler(this.LeftColumn_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -249,6 +255,6 @@
         private System.Windows.Forms.ToolTip HowToPlayTt;
         private System.Windows.Forms.ListBox rightColumnLb;
         private System.Windows.Forms.ListBox leftColumnLb;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SubmitBtn;
     }
 }

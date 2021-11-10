@@ -12,16 +12,18 @@ namespace DeweyDecimalApp.Forms
 {
     public partial class TaskCompletedMessageBox : Form
     {
+        string taskCompleted;
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// Constructor, takes in paramaters to change text
         /// </summary>
-        public TaskCompletedMessageBox(string status, string message, string time)
+        public TaskCompletedMessageBox(string status, string message, string time, string task)
         {
             InitializeComponent();
             StatusMessageLb.Text = status;
             MessageLb.Text = message;
             TimeTakenLb.Text = time;
+            taskCompleted = task;
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -31,8 +33,16 @@ namespace DeweyDecimalApp.Forms
         private void RetryTaskBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ReplacingBooksTask replaceBooks = new ReplacingBooksTask();
-            replaceBooks.ShowDialog();
+            if (taskCompleted.Equals("replacingBooks"))
+            {
+                ReplacingBooksTask taskForm = new ReplacingBooksTask();
+                taskForm.ShowDialog();
+            }
+            else
+            {
+                IdentifyingAreasTask taskForm = new IdentifyingAreasTask();
+                taskForm.ShowDialog();
+            }
             this.Close();
         }
 

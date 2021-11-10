@@ -16,12 +16,15 @@ namespace DeweyDecimalApp.Forms
 
         Dictionary<string, string> currentDescriptions = new Dictionary<string, string>();
         Dictionary<string, string> questions = new Dictionary<string, string>();
+        Dictionary<string, string> correctAnswers = new Dictionary<string, string>();
 
-        Dictionary<string, string> answers = new Dictionary<string, string>();
+        Dictionary<string, string> userAnswers = new Dictionary<string, string>();
         string selectedCallNumber, selectedDescription;
 
         List<string> leftColumn = new List<string>();
         List<string> rightColumn = new List<string>();
+
+        Boolean callNumberToDescription = false;
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
@@ -35,30 +38,34 @@ namespace DeweyDecimalApp.Forms
 
             GenerateQuestions();
 
-            //Alternate column matching type
+            /*CallNumbersToDescriptions();*/
+            DescriptionsToCallNumbers();
+
+            /*//Alternate column matching type
             if (random.Next(0, 2) == 0)
             {
                 CallNumbersToDescriptions();
             }
             else
             {
+                callNumberToDescription = false;
                 DescriptionsToCallNumbers();
-            }
+            }*/
 
             leftColumnLb.DataSource = leftColumn.OrderBy(x => Guid.NewGuid()).ToList();
             rightColumnLb.DataSource = rightColumn.OrderBy(x => Guid.NewGuid()).ToList();
 
             leftColumnLb.SelectedIndex = -1;
             rightColumnLb.SelectedIndex = -1;
-            answers.Clear();
+            userAnswers.Clear();
 
             if (leftColumnLb.SelectedIndex == -1)
             {
                 rightColumnLb.Enabled = false;
             }
 
-            leftColumnLb.DrawItem += new DrawItemEventHandler(listBox1_SetColor);
-            rightColumnLb.DrawItem += new DrawItemEventHandler(listBox2_SetColor);
+            leftColumnLb.DrawItem += new DrawItemEventHandler(listBox_SetColor);
+            rightColumnLb.DrawItem += new DrawItemEventHandler(listBox_SetColor);
             
         }
 
@@ -133,65 +140,53 @@ namespace DeweyDecimalApp.Forms
             questions.Clear();
         }
 
-        private void QuestionsListCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*foreach (var selected in QuestionsListCb.CheckedItems)
-            {
-                if (selectedCallNumbers.Contains(selected))
-                {
-                    QuestionsListCb.Enabled = true;
-                }
-                else
-                {
-                    QuestionsListCb.Enabled = false;
-                }
-                selectedCallNumbers.Add(selected.ToString());
-                Console.WriteLine(selected.)
-            }*/
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void LeftColumn_SelectedIndexChanged(object sender, EventArgs e)
         {
             rightColumnLb.ClearSelected();
             rightColumnLb.Enabled = true;
-            if(leftColumnLb.SelectedIndex != -1)
+            if (leftColumnLb.SelectedIndex != -1)
             {
-                selectedCallNumber = leftColumnLb.SelectedItem.ToString();
-            }
-            Refresh();
-
-        }
-
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(rightColumnLb.SelectedIndex != -1)
-            {
-                selectedDescription = rightColumnLb.SelectedItem.ToString();
-
-                if (!answers.ContainsKey(selectedCallNumber))
+                if (callNumberToDescription)
                 {
-                    answers.Add(selectedCallNumber, selectedDescription);
+                    selectedCallNumber = leftColumnLb.SelectedItem.ToString();
                 }
                 else
                 {
-                    answers[selectedCallNumber] = selectedDescription;
+                    selectedDescription = leftColumnLb.SelectedItem.ToString();
+                }
+                
+            }
+            Refresh();
+        }
+
+        private void RightColumn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rightColumnLb.SelectedIndex != -1)
+            {
+                if (callNumberToDescription)
+                {
+                    selectedDescription = rightColumnLb.SelectedItem.ToString();
+                }
+                else
+                {
+                    selectedCallNumber = rightColumnLb.SelectedItem.ToString();
+                }
+                
+
+                if (!userAnswers.ContainsKey(selectedCallNumber))
+                {
+                    userAnswers.Add(selectedCallNumber, selectedDescription);
+                }
+                else
+                {
+                    userAnswers[selectedCallNumber] = selectedDescription;
                 }
                 Refresh();
             }
-   
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            leftColumnLb.ClearSelected();
-            rightColumnLb.ClearSelected();
-            foreach (var item in answers)
-            {
-                Console.WriteLine(item.Key  + " with " + item.Value);
-            }
-        }
-
-        void listBox1_SetColor(object sender, DrawItemEventArgs e)
+        void listBox_SetColor(object sender, DrawItemEventArgs e)
         {
             try
             {
@@ -206,9 +201,9 @@ namespace DeweyDecimalApp.Forms
 
                 string item = ((ListBox)sender).Items[e.Index].ToString();
 
-                for (int a = 0; a < answers.Count; a++)
+                for (int a = 0; a < userAnswers.Count; a++)
                 {
-                    if (item.Equals(answers.ElementAt(a).Key))
+                    if (item.Equals(userAnswers.ElementAt(a).Key) || item.Equals(userAnswers.ElementAt(a).Value))
                     {
                         switch (a)
                         {
@@ -249,72 +244,65 @@ namespace DeweyDecimalApp.Forms
 
         }
 
-        private void listBox1_Leave(object sender, EventArgs e)
+        private void SubmitBtn_Click(object sender, EventArgs e)
         {
+            correctAnswers.Clear();
             leftColumnLb.ClearSelected();
-        }
-
-        private void listBox2_Leave(object sender, EventArgs e)
-        {
             rightColumnLb.ClearSelected();
-        }
 
-        void listBox2_SetColor(object sender, DrawItemEventArgs e)
-        {
-            try
+            
+            foreach(var question in leftColumn)
             {
-                e.DrawBackground();
-                Graphics g = e.Graphics;
-                SolidBrush backgroundColorBrush = new SolidBrush(Color.FromArgb(43, 43, 53));
-                SolidBrush itemTextColorBrush = new SolidBrush(Color.White);
-                Pen border = new Pen(Color.FromArgb(28, 28, 38));
-                border.Width = 5;
-
-
-
-                string item = ((ListBox)sender).Items[e.Index].ToString();
-
-                for (int a = 0; a < answers.Count; a++)
+                if (callNumberToDescription)
                 {
-                    if (item.Equals(answers.ElementAt(a).Value))
+                    foreach (string key in questions.Keys)
                     {
-                        switch (a)
+                        if (key == question)
                         {
-                            case 0:
-                                backgroundColorBrush = new SolidBrush(Color.FromArgb(155, 115, 205));
-                                break;
-                            case 1:
-                                backgroundColorBrush = new SolidBrush(Color.FromArgb(106, 106, 255));
-                                break;
-                            case 2:
-                                backgroundColorBrush = new SolidBrush(Color.FromArgb(255, 106, 142));
-                                break;
-                            case 3:
-                                backgroundColorBrush = new SolidBrush(Color.FromArgb(255, 124, 106));
-                                break;
-
+                            correctAnswers.Add(key, questions[key]);
                         }
                     }
                 }
-
-                bool isItemSelected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected);
-                if (isItemSelected)
+                else
                 {
-                    border.Color = Color.White;
+                    foreach (string value in questions.Values)
+                    {
+                        if (value == question)
+                        {
+                            var key = questions.FirstOrDefault(x => x.Value.Equals(value)).Key;
+                            correctAnswers.Add(key, value);
+                        }
+                    }
                 }
-
-                SizeF size = e.Graphics.MeasureString(item.ToString(), e.Font);
-                g.FillRectangle(backgroundColorBrush, e.Bounds);
-                e.Graphics.DrawRectangle(border, e.Bounds);
-                g.DrawString(((ListBox)sender).Items[e.Index].ToString(), e.Font, itemTextColorBrush, e.Bounds.Left + (e.Bounds.Width / 2 - size.Width / 2), e.Bounds.Top + (e.Bounds.Height / 2 - size.Height / 2));
-
-                e.DrawFocusRectangle();
             }
-            catch
+
+            if (userAnswers.OrderBy(pair => pair.Key).SequenceEqual(correctAnswers.OrderBy(pair => pair.Key)))
             {
 
-            }
+                // Custom text for the Message Box Popup for being correct
+                string status = "Well Done!";
+                string message = "You identified the call numbers correctly.";
+                string time = "0 seconds";
 
+                // Open custom messagebox
+                this.Hide();
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "identifyingAreas");
+                taskCompletedMessageBox.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                // Custom text for the Message Box Popup for being correct
+                string status = "Good Try!";
+                string message = "You failed to identify the call numbers correctly. \nClick 'Retry Task' to keep on trying!";
+                string time = "0 seconds";
+
+                // Open custom messagebox
+                this.Hide();
+                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "identifyingAreas");
+                taskCompletedMessageBox.ShowDialog();
+                this.Close();
+            }
         }
     }
 }
