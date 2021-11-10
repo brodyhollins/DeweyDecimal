@@ -254,18 +254,34 @@ namespace DeweyDecimalApp.Forms
             leftColumnLb.ClearSelected();
             rightColumnLb.ClearSelected();
 
-            foreach(var question in userAnswers)
+            foreach (var question in userAnswers)
             {
-                if(userAnswers[question.Key]  == correctAnswers[question.Key])
+                if (callNumberToDescription)
                 {
-                    totalCorrect++;
-                    if(Awards.correctQuestionsAward != 20)
+                    if (userAnswers[question.Key].Equals(correctAnswers[question.Key]))
                     {
-                        Awards.correctQuestionsAward++;
+                        totalCorrect++;
+                        if (Awards.correctQuestionsAward != 20)
+                        {
+                            Awards.correctQuestionsAward++;
+                        }
                     }
                 }
-            }
-
+                else
+                {
+                    if (correctAnswers.ContainsKey(question.Key))
+                    {
+                        if (userAnswers[question.Key].Equals(correctAnswers[question.Key]))
+                        {
+                            totalCorrect++;
+                            if (Awards.correctQuestionsAward != 20)
+                            {
+                                Awards.correctQuestionsAward++;
+                            }
+                        }
+                    }
+                }
+            }            
             TaskCompleted();
         }
 
