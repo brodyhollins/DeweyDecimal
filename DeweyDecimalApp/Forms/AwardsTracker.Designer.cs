@@ -66,10 +66,31 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.questionsAwardPb = new System.Windows.Forms.ProgressBar();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.questionsAwardLb = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.descriptionsAwardPb = new System.Windows.Forms.ProgressBar();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.descriptionsAwardLb = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.callNumbersAwardPb = new System.Windows.Forms.ProgressBar();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.callNumbersAwardLb = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -80,6 +101,13 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.panel22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -456,7 +484,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 855);
+            this.panel3.Size = new System.Drawing.Size(3, 1233);
             this.panel3.TabIndex = 14;
             // 
             // panel4
@@ -465,14 +493,14 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(679, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 855);
+            this.panel4.Size = new System.Drawing.Size(3, 1233);
             this.panel4.TabIndex = 15;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 852);
+            this.panel5.Location = new System.Drawing.Point(3, 1230);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(676, 3);
             this.panel5.TabIndex = 16;
@@ -517,23 +545,12 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Identifying Areas Task";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Red Hat Display", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
-            this.label6.Location = new System.Drawing.Point(262, 684);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(162, 27);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "(Coming Soon)";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Red Hat Display", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
-            this.label9.Location = new System.Drawing.Point(262, 776);
+            this.label9.Location = new System.Drawing.Point(262, 1154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(162, 27);
             this.label9.TabIndex = 22;
@@ -544,7 +561,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Red Hat Display", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(202, 744);
+            this.label12.Location = new System.Drawing.Point(202, 1122);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(272, 27);
             this.label12.TabIndex = 21;
@@ -553,10 +570,273 @@
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(3, 803);
+            this.panel14.Location = new System.Drawing.Point(3, 1181);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(676, 49);
             this.panel14.TabIndex = 23;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
+            this.panel15.Controls.Add(this.panel18);
+            this.panel15.Controls.Add(this.panel20);
+            this.panel15.Controls.Add(this.panel22);
+            this.panel15.Location = new System.Drawing.Point(43, 702);
+            this.panel15.Name = "panel15";
+            this.panel15.Padding = new System.Windows.Forms.Padding(10);
+            this.panel15.Size = new System.Drawing.Size(600, 367);
+            this.panel15.TabIndex = 14;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.questionsAwardPb);
+            this.panel18.Controls.Add(this.panel19);
+            this.panel18.Controls.Add(this.questionsAwardLb);
+            this.panel18.Controls.Add(this.label19);
+            this.panel18.Controls.Add(this.label20);
+            this.panel18.Controls.Add(this.pictureBox6);
+            this.panel18.Location = new System.Drawing.Point(24, 243);
+            this.panel18.Name = "panel18";
+            this.panel18.Padding = new System.Windows.Forms.Padding(10);
+            this.panel18.Size = new System.Drawing.Size(550, 95);
+            this.panel18.TabIndex = 9;
+            // 
+            // questionsAwardPb
+            // 
+            this.questionsAwardPb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.questionsAwardPb.Location = new System.Drawing.Point(100, 65);
+            this.questionsAwardPb.MaximumSize = new System.Drawing.Size(395, 20);
+            this.questionsAwardPb.MinimumSize = new System.Drawing.Size(395, 20);
+            this.questionsAwardPb.Name = "questionsAwardPb";
+            this.questionsAwardPb.Size = new System.Drawing.Size(395, 20);
+            this.questionsAwardPb.Step = 5;
+            this.questionsAwardPb.TabIndex = 7;
+            // 
+            // panel19
+            // 
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel19.Location = new System.Drawing.Point(85, 65);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(15, 20);
+            this.panel19.TabIndex = 6;
+            // 
+            // questionsAwardLb
+            // 
+            this.questionsAwardLb.AutoSize = true;
+            this.questionsAwardLb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.questionsAwardLb.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionsAwardLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.questionsAwardLb.Location = new System.Drawing.Point(497, 65);
+            this.questionsAwardLb.MinimumSize = new System.Drawing.Size(43, 20);
+            this.questionsAwardLb.Name = "questionsAwardLb";
+            this.questionsAwardLb.Size = new System.Drawing.Size(43, 20);
+            this.questionsAwardLb.TabIndex = 4;
+            this.questionsAwardLb.Text = "0/20";
+            this.questionsAwardLb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label19.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.label19.Location = new System.Drawing.Point(85, 35);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.label19.Size = new System.Drawing.Size(290, 30);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Successfully answer 20 questions correct";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label20.Font = new System.Drawing.Font("Red Hat Display Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(85, 10);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label20.Size = new System.Drawing.Size(150, 25);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "20 Questions";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.descriptionsAwardPb);
+            this.panel20.Controls.Add(this.panel21);
+            this.panel20.Controls.Add(this.descriptionsAwardLb);
+            this.panel20.Controls.Add(this.label22);
+            this.panel20.Controls.Add(this.label23);
+            this.panel20.Controls.Add(this.pictureBox7);
+            this.panel20.Location = new System.Drawing.Point(24, 134);
+            this.panel20.Name = "panel20";
+            this.panel20.Padding = new System.Windows.Forms.Padding(10);
+            this.panel20.Size = new System.Drawing.Size(550, 95);
+            this.panel20.TabIndex = 8;
+            // 
+            // descriptionsAwardPb
+            // 
+            this.descriptionsAwardPb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.descriptionsAwardPb.Location = new System.Drawing.Point(100, 65);
+            this.descriptionsAwardPb.MaximumSize = new System.Drawing.Size(395, 20);
+            this.descriptionsAwardPb.MinimumSize = new System.Drawing.Size(395, 20);
+            this.descriptionsAwardPb.Name = "descriptionsAwardPb";
+            this.descriptionsAwardPb.Size = new System.Drawing.Size(395, 20);
+            this.descriptionsAwardPb.TabIndex = 7;
+            // 
+            // panel21
+            // 
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel21.Location = new System.Drawing.Point(85, 65);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(15, 20);
+            this.panel21.TabIndex = 6;
+            // 
+            // descriptionsAwardLb
+            // 
+            this.descriptionsAwardLb.AutoSize = true;
+            this.descriptionsAwardLb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.descriptionsAwardLb.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionsAwardLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.descriptionsAwardLb.Location = new System.Drawing.Point(497, 65);
+            this.descriptionsAwardLb.MinimumSize = new System.Drawing.Size(43, 20);
+            this.descriptionsAwardLb.Name = "descriptionsAwardLb";
+            this.descriptionsAwardLb.Size = new System.Drawing.Size(43, 20);
+            this.descriptionsAwardLb.TabIndex = 4;
+            this.descriptionsAwardLb.Text = "0/1";
+            this.descriptionsAwardLb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label22.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.label22.Location = new System.Drawing.Point(85, 35);
+            this.label22.Name = "label22";
+            this.label22.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.label22.Size = new System.Drawing.Size(315, 30);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Play and identify the description call numbers";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label23.Font = new System.Drawing.Font("Red Hat Display Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(85, 10);
+            this.label23.Name = "label23";
+            this.label23.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label23.Size = new System.Drawing.Size(334, 25);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "Complete Description Questions";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.callNumbersAwardPb);
+            this.panel22.Controls.Add(this.panel23);
+            this.panel22.Controls.Add(this.callNumbersAwardLb);
+            this.panel22.Controls.Add(this.label25);
+            this.panel22.Controls.Add(this.label26);
+            this.panel22.Controls.Add(this.pictureBox8);
+            this.panel22.Location = new System.Drawing.Point(24, 25);
+            this.panel22.Name = "panel22";
+            this.panel22.Padding = new System.Windows.Forms.Padding(10);
+            this.panel22.Size = new System.Drawing.Size(550, 95);
+            this.panel22.TabIndex = 0;
+            // 
+            // callNumbersAwardPb
+            // 
+            this.callNumbersAwardPb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.callNumbersAwardPb.Location = new System.Drawing.Point(100, 65);
+            this.callNumbersAwardPb.MaximumSize = new System.Drawing.Size(395, 20);
+            this.callNumbersAwardPb.MinimumSize = new System.Drawing.Size(395, 20);
+            this.callNumbersAwardPb.Name = "callNumbersAwardPb";
+            this.callNumbersAwardPb.Size = new System.Drawing.Size(395, 20);
+            this.callNumbersAwardPb.Step = 100;
+            this.callNumbersAwardPb.TabIndex = 7;
+            // 
+            // panel23
+            // 
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel23.Location = new System.Drawing.Point(85, 65);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(15, 20);
+            this.panel23.TabIndex = 6;
+            // 
+            // callNumbersAwardLb
+            // 
+            this.callNumbersAwardLb.AutoSize = true;
+            this.callNumbersAwardLb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.callNumbersAwardLb.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.callNumbersAwardLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.callNumbersAwardLb.Location = new System.Drawing.Point(497, 65);
+            this.callNumbersAwardLb.MinimumSize = new System.Drawing.Size(43, 20);
+            this.callNumbersAwardLb.Name = "callNumbersAwardLb";
+            this.callNumbersAwardLb.Size = new System.Drawing.Size(43, 20);
+            this.callNumbersAwardLb.TabIndex = 4;
+            this.callNumbersAwardLb.Text = "0/1";
+            this.callNumbersAwardLb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label25.Font = new System.Drawing.Font("Red Hat Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.label25.Location = new System.Drawing.Point(85, 35);
+            this.label25.Name = "label25";
+            this.label25.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.label25.Size = new System.Drawing.Size(315, 30);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Play and identify the call number descriptions";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label26.Font = new System.Drawing.Font("Red Hat Display Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(85, 10);
+            this.label26.Name = "label26";
+            this.label26.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label26.Size = new System.Drawing.Size(343, 25);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "Complete Call Number Questions";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
             // 
             // AwardsTracker
             // 
@@ -565,10 +845,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(699, 636);
+            this.Controls.Add(this.panel15);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
@@ -598,6 +878,16 @@
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,9 +932,30 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.ProgressBar questionsAwardPb;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label questionsAwardLb;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.ProgressBar descriptionsAwardPb;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Label descriptionsAwardLb;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.ProgressBar callNumbersAwardPb;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Label callNumbersAwardLb;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

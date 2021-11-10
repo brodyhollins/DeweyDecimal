@@ -20,6 +20,10 @@ namespace DeweyDecimalApp.Forms
         {
             InitializeComponent();
 
+            //----------------------------------------------------------------------------------------------------------------//
+            /// <summary>
+            /// Replace Books Task Awards
+            /// </summary>
             // Setting values for 'Complete your first task' award
             if (Awards.firstTaskCompletedAward)
             {
@@ -46,6 +50,33 @@ namespace DeweyDecimalApp.Forms
             {
                 determinedAwardPb.Value = Awards.determindedAward * 10;
                 determinedAwardLb.Text = String.Concat(Awards.determindedAward.ToString(), "/10");
+            }
+
+
+            //----------------------------------------------------------------------------------------------------------------//
+            /// <summary>
+            /// Identify Areas Task Awards
+            /// </summary>
+            /// 
+            // Setting values for 'Complete Call Number Questions' award
+            if (Awards.completeCallNumberQuestionAward)
+            {
+                callNumbersAwardPb.Value = 100;
+                callNumbersAwardLb.Text = "1/1";
+            }
+
+            // Setting values for 'Complete Description Questions' award
+            if (Awards.completeDescriptionQuestionAward)
+            {
+                descriptionsAwardPb.Value = 100;
+                descriptionsAwardLb.Text = "1/1";
+            }
+
+            // Setting values for 'Determined' award
+            if (Awards.correctQuestionsAward <= 20)
+            {
+                questionsAwardPb.Value = Awards.correctQuestionsAward * 5;
+                questionsAwardLb.Text = String.Concat(Awards.correctQuestionsAward.ToString(), "/20");
             }
         }
 

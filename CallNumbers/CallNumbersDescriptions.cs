@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DeweyDecimalApp
+namespace CallNumbers
 {
     public class CallNumbersDescriptions
     {
@@ -19,7 +19,5 @@ namespace DeweyDecimalApp
             {"800", "Literature" },
             {"900", "Geography and History" }
         };
-
-        
     }
 }

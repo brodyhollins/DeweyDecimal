@@ -20,10 +20,17 @@ namespace DeweyDecimalApp.Forms
         public TaskCompletedMessageBox(string status, string message, string time, string task)
         {
             InitializeComponent();
+            if(time.Equals(""))
+            {
+                TimeTakenTextLb.Visible = false;
+            }
+
             StatusMessageLb.Text = status;
             MessageLb.Text = message;
             TimeTakenLb.Text = time;
             taskCompleted = task;
+
+            
         }
 
         //----------------------------------------------------------------------------------------------------------------//
