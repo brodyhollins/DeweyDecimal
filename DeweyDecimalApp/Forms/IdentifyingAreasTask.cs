@@ -306,7 +306,7 @@ namespace DeweyDecimalApp.Forms
                 // Custom text for the Message Box Popup for being correct
                 string status = "Well Done!";
                 string message = "You identified the call numbers correctly.";
-                string time = "0 seconds";
+                string time = "";
 
                 // Open custom messagebox
                 this.Hide();
