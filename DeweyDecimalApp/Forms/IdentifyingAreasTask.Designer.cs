@@ -212,8 +212,14 @@
             this.label5.Size = new System.Drawing.Size(121, 21);
             this.label5.TabIndex = 21;
             this.label5.Text = "How to play ?";
-            this.HowToPlayTt.SetToolTip(this.label5, "Click the \'Start\' button to begin.\r\nClick and Drag the Boxes and align them from " +
-        "\r\nleft(lowest) to right(highest).");
+            this.HowToPlayTt.SetToolTip(this.label5, "Match the questions in the left column to the answers in the right column.\r\nColou" +
+        "rs will indicate the matched sets.\r\nClick Submit when you completed the matching" +
+        ".");
+            // 
+            // HowToPlayTt
+            // 
+            this.HowToPlayTt.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.HowToPlayTt.ToolTipTitle = "How to play";
             // 
             // IdentifyingAreasTask
             // 
