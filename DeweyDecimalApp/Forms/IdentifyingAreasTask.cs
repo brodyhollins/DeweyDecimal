@@ -20,13 +20,8 @@ namespace DeweyDecimalApp.Forms
         Dictionary<string, string> answers = new Dictionary<string, string>();
         string selectedCallNumber, selectedDescription;
 
-        List<string> colours = new List<string>
-        {
-            "Red",
-            "Green",
-            "Blue",
-            "Pink"
-        };
+        List<string> leftColumn = new List<string>();
+        List<string> rightColumn = new List<string>();
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
@@ -40,16 +35,7 @@ namespace DeweyDecimalApp.Forms
 
             GenerateQuestions();
 
-            CallNumbersToDescriptions();
-
-            if(listBox1.SelectedIndex == -1)
-            {
-                listBox2.Enabled = false;
-            }
-
-            listBox1.DrawItem += new DrawItemEventHandler(listBox1_SetColor);
-            listBox2.DrawItem += new DrawItemEventHandler(listBox2_SetColor);
-            /*//Alternate column matching type
+            //Alternate column matching type
             if (random.Next(0, 2) == 0)
             {
                 CallNumbersToDescriptions();
@@ -57,12 +43,37 @@ namespace DeweyDecimalApp.Forms
             else
             {
                 DescriptionsToCallNumbers();
-            }*/
+            }
+
+            leftColumnLb.DataSource = leftColumn.OrderBy(x => Guid.NewGuid()).ToList();
+            rightColumnLb.DataSource = rightColumn.OrderBy(x => Guid.NewGuid()).ToList();
+
+            leftColumnLb.SelectedIndex = -1;
+            rightColumnLb.SelectedIndex = -1;
+            answers.Clear();
+
+            if (leftColumnLb.SelectedIndex == -1)
+            {
+                rightColumnLb.Enabled = false;
+            }
+
+            leftColumnLb.DrawItem += new DrawItemEventHandler(listBox1_SetColor);
+            rightColumnLb.DrawItem += new DrawItemEventHandler(listBox2_SetColor);
+            
         }
 
         private void DescriptionsToCallNumbers()
         {
-            
+            for (int j = 0; j < questions.Count; j++)
+            {
+                if (j > 3)
+                {
+                    rightColumn.Add(questions.Keys.ElementAt(j));
+                    continue;
+                }
+                leftColumn.Add(questions.Values.ElementAt(j));
+                rightColumn.Add(questions.Keys.ElementAt(j));
+            }
         }
 
         private void CallNumbersToDescriptions()
@@ -71,10 +82,11 @@ namespace DeweyDecimalApp.Forms
             {
                 if (j > 3)
                 {
-                    Console.WriteLine("" + questions.Values.ElementAt(j));
+                    rightColumn.Add(questions.Values.ElementAt(j));
                     continue;
                 }
-                Console.WriteLine(questions.Keys.ElementAt(j) + " = " + questions.Values.ElementAt(j));
+                leftColumn.Add(questions.Keys.ElementAt(j));
+                rightColumn.Add(questions.Values.ElementAt(j));
             }
         }
 
@@ -140,20 +152,21 @@ namespace DeweyDecimalApp.Forms
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox2.ClearSelected();
-            listBox2.Enabled = true;
-            if(listBox1.SelectedIndex != -1)
+            rightColumnLb.ClearSelected();
+            rightColumnLb.Enabled = true;
+            if(leftColumnLb.SelectedIndex != -1)
             {
-                selectedCallNumber = listBox1.SelectedItem.ToString();
+                selectedCallNumber = leftColumnLb.SelectedItem.ToString();
             }
-            
+            Refresh();
+
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox2.SelectedIndex != -1)
+            if(rightColumnLb.SelectedIndex != -1)
             {
-                selectedDescription = listBox2.SelectedItem.ToString();
+                selectedDescription = rightColumnLb.SelectedItem.ToString();
 
                 if (!answers.ContainsKey(selectedCallNumber))
                 {
@@ -163,16 +176,15 @@ namespace DeweyDecimalApp.Forms
                 {
                     answers[selectedCallNumber] = selectedDescription;
                 }
-
-                int a = listBox1.Items.IndexOf(selectedCallNumber);
+                Refresh();
             }
    
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.ClearSelected();
-            listBox2.ClearSelected();
+            leftColumnLb.ClearSelected();
+            rightColumnLb.ClearSelected();
             foreach (var item in answers)
             {
                 Console.WriteLine(item.Key  + " with " + item.Value);
@@ -239,12 +251,12 @@ namespace DeweyDecimalApp.Forms
 
         private void listBox1_Leave(object sender, EventArgs e)
         {
-            listBox1.ClearSelected();
+            leftColumnLb.ClearSelected();
         }
 
         private void listBox2_Leave(object sender, EventArgs e)
         {
-            listBox2.ClearSelected();
+            rightColumnLb.ClearSelected();
         }
 
         void listBox2_SetColor(object sender, DrawItemEventArgs e)
@@ -288,8 +300,7 @@ namespace DeweyDecimalApp.Forms
                 bool isItemSelected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected);
                 if (isItemSelected)
                 {
-                    backgroundColorBrush = new SolidBrush(Color.White);
-                    itemTextColorBrush = new SolidBrush(Color.Black);
+                    border.Color = Color.White;
                 }
 
                 SizeF size = e.Graphics.MeasureString(item.ToString(), e.Font);
