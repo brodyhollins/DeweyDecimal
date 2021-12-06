@@ -13,26 +13,17 @@ namespace DeweyDecimalApp.Forms
     {
         public Random random = new Random();
 
+        int level1, level2, level3;
+        int currentLevel = 3;
+
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// Declaring variables to be used throughout form
         /// </summary>
         Tree<string> mainTree = new Tree<string>();
-        Dictionary<string, string> questions = new Dictionary<string, string>();
-
-        //Column lists
-        List<string> leftColumn = new List<string>();
-        List<string> rightColumn = new List<string>();
-
-        //User and Answer variables
-        string selectedCallNumber, selectedDescription;
-        Dictionary<string, string> userAnswers = new Dictionary<string, string>();
-        Dictionary<string, string> correctAnswers = new Dictionary<string, string>();
-        int totalCorrect = 0;
-
-        //Swap from call number to decription to description to call numbers 
-        Boolean callNumberToDescription = true;
+        Dictionary<string, string> question = new Dictionary<string, string>();
+        Dictionary<int, string> answers = new Dictionary<int, string>();
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
@@ -45,47 +36,95 @@ namespace DeweyDecimalApp.Forms
             FileReader();
 
 
-            /*Init();
-
-            leftColumnLb.DrawItem += new DrawItemEventHandler(listBox_SetColor);
-            rightColumnLb.DrawItem += new DrawItemEventHandler(listBox_SetColor);*/
+            Init();
 
         }
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Create questions and randomize order, swap between call numbers and decriptions for questions
+        ///     Create question and possible answers
         /// </summary>
         private void Init()
         {
-            correctAnswers.Clear();
-            GenerateCallNumberQuestions callNumberQuestions = new GenerateCallNumberQuestions();
-            questions = callNumberQuestions.GenerateQuestions();
+            AnswersCLb.Items.Clear();
 
-            //Alternate column matching type
-            if (random.Next(0, 2) == 0)
+            GenerateQuestion(3);
+
+            GenerateAnswers();
+
+
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Generate a random question description from level 3 in the tree
+        /// </summary>
+        public void GenerateQuestion(int lvl)
+        {
+            List<string> values = new List<string>();
+            level1 = random.Next(0, 10);
+            level2 = random.Next(0, mainTree.Root.Children[level1].Children.Count());
+            level3 = random.Next(0, mainTree.Root.Children[level1].Children[level2].Children.Count());
+
+            //Take just the description and remove the key
+
+            switch (lvl)
             {
-                callNumberToDescription = true;
-                CallNumbersToDescriptions();
+                case 3:
+                    values = mainTree.Root.Children[level1].Children[level2].Children[level3].Data.Split(' ').ToList();
+                    break;
+                case 2:
+                    values = mainTree.Root.Children[level1].Children[level2].Data.Split(' ').ToList();
+                    break;
             }
-            else
+            
+            string callNumber = values.First();
+            values.RemoveAt(0);
+            string description = string.Join(" ", values);
+
+            question.Add(callNumber, description);
+            questionDescriptionLb.Text = description;
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Generate the level 1 answers, 1 being the correct answer which can be referenced by the question generated
+        /// </summary>
+        public void GenerateAnswers()
+        {
+            answers.Clear();
+            //Create a temp dictionary as to not mutate original answers Dictionary
+            Dictionary<int, string> tempAnswers = new Dictionary<int, string>();
+            
+            answers.Add(level1, mainTree.Root.Children[level1].Data);
+            tempAnswers.Add(level1, mainTree.Root.Children[level1].Data);
+
+            for (int x = 0; x < 3; x ++)
             {
-                callNumberToDescription = false;
-                DescriptionsToCallNumbers();
+                int index = random.Next(0, 10);
+                if (!answers.ContainsKey(index))
+                {
+                    answers.Add(index, mainTree.Root.Children[index].Data);
+                    tempAnswers.Add(index, mainTree.Root.Children[index].Data);
+                }
+                else
+                {
+                    x--;
+                }
+                
             }
 
-            leftColumnLb.DataSource = leftColumn.OrderBy(x => Guid.NewGuid()).ToList();
-            rightColumnLb.DataSource = rightColumn.OrderBy(x => Guid.NewGuid()).ToList();
+            //Sort our values by call number
+            var sortByCallNumbers = tempAnswers.ToList();
+            sortByCallNumbers.Sort((set1, set2) => set1.Value.CompareTo(set2.Value));
 
-            leftColumnLb.SelectedIndex = -1;
-            rightColumnLb.SelectedIndex = -1;
-            userAnswers.Clear();
-
-            if (leftColumnLb.SelectedIndex == -1)
+            AnswersCLb.Items.Clear();
+            //Populate our checklistbox with the values
+            foreach(var answer in sortByCallNumbers)
             {
-                rightColumnLb.Enabled = false;
+                AnswersCLb.Items.Add(answer.Value);
             }
-
+            
         }
 
         public void FileReader()
@@ -116,48 +155,6 @@ namespace DeweyDecimalApp.Forms
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Populate left column to be descriptions as questions
-        /// </summary>
-        private void DescriptionsToCallNumbers()
-        {
-            for (int j = 0; j < questions.Count; j++)
-            {
-                if (j > 3)
-                {
-                    rightColumn.Add(questions.Keys.ElementAt(j));
-                    continue;
-                }
-                leftColumn.Add(questions.Values.ElementAt(j));
-                rightColumn.Add(questions.Keys.ElementAt(j));
-
-                //Populate correct answers dictionary
-                correctAnswers.Add(questions.Keys.ElementAt(j), questions.Values.ElementAt(j));
-            }
-        }
-
-        //----------------------------------------------------------------------------------------------------------------//
-        /// <summary>
-        ///     Populate left column to be call numbers as questions
-        /// </summary>
-        private void CallNumbersToDescriptions()
-        {
-            for (int j = 0; j < questions.Count; j++)
-            {
-                if (j > 3)
-                {
-                    rightColumn.Add(questions.Values.ElementAt(j));
-                    continue;
-                }
-                leftColumn.Add(questions.Keys.ElementAt(j));
-                rightColumn.Add(questions.Values.ElementAt(j));
-
-                //Populate correct answers dictionary
-                correctAnswers.Add(questions.Keys.ElementAt(j), questions.Values.ElementAt(j));
-            }
-        }
-
-        //----------------------------------------------------------------------------------------------------------------//
-        /// <summary>
         ///     Back button, to go back to 'Task Selection Form'
         /// </summary>
         private void BackBtn_Click(object sender, EventArgs e)
@@ -168,112 +165,47 @@ namespace DeweyDecimalApp.Forms
             this.Close();
         }
 
-        //----------------------------------------------------------------------------------------------------------------//
-        /// <summary>
-        ///     Temp hold value of left column question 
-        /// </summary>
-        private void LeftColumn_SelectedIndexChanged(object sender, EventArgs e)
+        private void AnswersCLb_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            rightColumnLb.ClearSelected();
-            rightColumnLb.Enabled = true;
-            if (leftColumnLb.SelectedIndex != -1)
-            {
-                if (callNumberToDescription)
-                {
-                    selectedCallNumber = leftColumnLb.SelectedItem.ToString();
-                }
-                else
-                {
-                    selectedDescription = leftColumnLb.SelectedItem.ToString();
-                }
-                
-            }
-            //Refresh to load styling changes
-            Refresh();
+            for (int ix = 0; ix < AnswersCLb.Items.Count; ++ix)
+                if (ix != e.Index) AnswersCLb.SetItemChecked(ix, false);
         }
 
-        //----------------------------------------------------------------------------------------------------------------//
-        /// <summary>
-        ///     Temp hold value of right column answer, then add to the user answers dictionary 
-        /// </summary>
-        private void RightColumn_SelectedIndexChanged(object sender, EventArgs e)
+        public void ContinueToNextLevel()
         {
-            if (rightColumnLb.SelectedIndex != -1)
+            if(currentLevel > 1)
             {
-                if (callNumberToDescription)
+                DialogResult dialogResult = MessageBox.Show("You identified the call number correctly. \nContinue to next level?", "Correct Answer!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    selectedDescription = rightColumnLb.SelectedItem.ToString();
+                    GenerateQuestion(currentLevel);
+                    GenerateAnswers();
                 }
-                else
+                else if (dialogResult == DialogResult.No)
                 {
-                    selectedCallNumber = rightColumnLb.SelectedItem.ToString();
+                    Console.WriteLine("Go to Main Menu");
                 }
-                
-
-                if (!userAnswers.ContainsKey(selectedCallNumber))
-                {
-                    userAnswers.Add(selectedCallNumber, selectedDescription);
-                }
-                else
-                {
-                    userAnswers[selectedCallNumber] = selectedDescription;
-                }
-                Refresh();
             }
-
+            else
+            {
+                TaskCompleted();
+            }
+            
         }
 
-        //----------------------------------------------------------------------------------------------------------------//
-        /// <summary>
-        ///     Styling for listbox items to match items from left column to right column.
-        ///     Selected to be easy to notice without changing the colour of item for easier UX
-        /// </summary>
-        void listBox_SetColor(object sender, DrawItemEventArgs e)
+        public void RepeatLevel()
         {
-            e.DrawBackground();
-            Graphics g = e.Graphics;
-            SolidBrush backgroundColorBrush = new SolidBrush(Color.FromArgb(43, 43, 53));
-            SolidBrush itemTextColorBrush = new SolidBrush(Color.White);
-            Pen border = new Pen(Color.FromArgb(28, 28, 38));
-            border.Width = 5;
-
-            string item = ((ListBox)sender).Items[e.Index].ToString();
-
-            for (int a = 0; a < userAnswers.Count; a++)
+            DialogResult dialogResult = MessageBox.Show("You identified the call number incorrectly. \nKeep trying?", "Incorrect Answer.", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                if (item.Equals(userAnswers.ElementAt(a).Key) || item.Equals(userAnswers.ElementAt(a).Value))
-                {
-                    switch (a)
-                    {
-                        case 0:
-                            backgroundColorBrush = new SolidBrush(Color.FromArgb(155, 115, 205));
-                            break;
-                        case 1:
-                            backgroundColorBrush = new SolidBrush(Color.FromArgb(106, 106, 255));
-                            break;
-                        case 2:
-                            backgroundColorBrush = new SolidBrush(Color.FromArgb(255, 106, 142));
-                            break;
-                        case 3:
-                            backgroundColorBrush = new SolidBrush(Color.FromArgb(255, 124, 106));
-                            break;
-
-                    }
-                }
+                GenerateQuestion(currentLevel);
+                GenerateAnswers();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                Console.WriteLine("Go to Main Menu");
             }
 
-            bool isItemSelected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected);
-            if (isItemSelected)
-            {
-                border.Color = Color.White;
-            }
-
-            SizeF size = e.Graphics.MeasureString(item.ToString(), e.Font);
-            g.FillRectangle(backgroundColorBrush, e.Bounds);
-            e.Graphics.DrawRectangle(border, e.Bounds);
-            g.DrawString(((ListBox)sender).Items[e.Index].ToString(), e.Font, itemTextColorBrush, e.Bounds.Left + (e.Bounds.Width / 2 - size.Width / 2), e.Bounds.Top + (e.Bounds.Height / 2 - size.Height / 2));
-
-            e.DrawFocusRectangle();
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -282,38 +214,16 @@ namespace DeweyDecimalApp.Forms
         /// </summary>
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            leftColumnLb.ClearSelected();
-            rightColumnLb.ClearSelected();
-
-            foreach (var question in userAnswers)
+            var selectedKey = answers.FirstOrDefault(x => x.Value == AnswersCLb.SelectedItem.ToString()).Key;
+            if (selectedKey == level1)
             {
-                if (callNumberToDescription)
-                {
-                    if (userAnswers[question.Key].Equals(correctAnswers[question.Key]))
-                    {
-                        totalCorrect++;
-                        if (Awards.correctQuestionsAward != 20)
-                        {
-                            Awards.correctQuestionsAward++;
-                        }
-                    }
-                }
-                else
-                {
-                    if (correctAnswers.ContainsKey(question.Key))
-                    {
-                        if (userAnswers[question.Key].Equals(correctAnswers[question.Key]))
-                        {
-                            totalCorrect++;
-                            if (Awards.correctQuestionsAward != 20)
-                            {
-                                Awards.correctQuestionsAward++;
-                            }
-                        }
-                    }
-                }
-            }            
-            TaskCompleted();
+                currentLevel--;
+                ContinueToNextLevel();
+            }
+            else
+            {
+                RepeatLevel();
+            }
         }
 
         //----------------------------------------------------------------------------------------------------------------//
@@ -322,42 +232,7 @@ namespace DeweyDecimalApp.Forms
         /// </summary>
         private void TaskCompleted()
         {
-            if (totalCorrect == 4)
-            {
-                if (callNumberToDescription && !Awards.completeCallNumberQuestionAward)
-                {
-                    Awards.completeCallNumberQuestionAward = true;
-                }
-
-                if (!callNumberToDescription && !Awards.completeDescriptionQuestionAward)
-                {
-                    Awards.completeDescriptionQuestionAward = true;
-                }
-
-                // Custom text for the Message Box Popup for being correct
-                string status = "Well Done!";
-                string message = "You identified the call numbers correctly.";
-                string time = "";
-
-                // Open custom messagebox
-                this.Hide();
-                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "identifyingAreas");
-                taskCompletedMessageBox.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                // Custom text for the Message Box Popup for being correct
-                string status = "Good Try!";
-                string message = "You failed to identify the call numbers correctly. \nYou got " + totalCorrect + " answers correct" + "\nClick 'Retry Task' to keep on trying!";
-                string time = "";
-
-                // Open custom messagebox
-                this.Hide();
-                TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "identifyingAreas");
-                taskCompletedMessageBox.ShowDialog();
-                this.Close();
-            }
+            Console.WriteLine("Show the finsih screen and cal awards");
         }
     }
 }

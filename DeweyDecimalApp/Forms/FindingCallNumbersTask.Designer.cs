@@ -37,13 +37,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.questionDescriptionLb = new System.Windows.Forms.Label();
             this.SubmitBtn = new System.Windows.Forms.Button();
-            this.rightColumnLb = new System.Windows.Forms.ListBox();
             this.leftColumnLb = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.HowToPlayTt = new System.Windows.Forms.ToolTip(this.components);
+            this.AnswersCLb = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -117,14 +118,26 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.AnswersCLb);
+            this.panel2.Controls.Add(this.questionDescriptionLb);
             this.panel2.Controls.Add(this.SubmitBtn);
-            this.panel2.Controls.Add(this.rightColumnLb);
             this.panel2.Controls.Add(this.leftColumnLb);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(19, 95);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(695, 595);
             this.panel2.TabIndex = 19;
+            // 
+            // questionDescriptionLb
+            // 
+            this.questionDescriptionLb.AutoSize = true;
+            this.questionDescriptionLb.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionDescriptionLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.questionDescriptionLb.Location = new System.Drawing.Point(10, 41);
+            this.questionDescriptionLb.Name = "questionDescriptionLb";
+            this.questionDescriptionLb.Size = new System.Drawing.Size(104, 21);
+            this.questionDescriptionLb.TabIndex = 12;
+            this.questionDescriptionLb.Text = "Description";
             // 
             // SubmitBtn
             // 
@@ -142,28 +155,6 @@
             this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
-            // rightColumnLb
-            // 
-            this.rightColumnLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.rightColumnLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rightColumnLb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.rightColumnLb.Font = new System.Drawing.Font("Red Hat Display", 12F, System.Drawing.FontStyle.Bold);
-            this.rightColumnLb.FormattingEnabled = true;
-            this.rightColumnLb.ItemHeight = 50;
-            this.rightColumnLb.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G"});
-            this.rightColumnLb.Location = new System.Drawing.Point(388, 48);
-            this.rightColumnLb.Name = "rightColumnLb";
-            this.rightColumnLb.Size = new System.Drawing.Size(292, 450);
-            this.rightColumnLb.TabIndex = 9;
-            this.rightColumnLb.SelectedIndexChanged += new System.EventHandler(this.RightColumn_SelectedIndexChanged);
-            // 
             // leftColumnLb
             // 
             this.leftColumnLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
@@ -177,11 +168,10 @@
             "2",
             "3",
             "4"});
-            this.leftColumnLb.Location = new System.Drawing.Point(14, 48);
+            this.leftColumnLb.Location = new System.Drawing.Point(14, 329);
             this.leftColumnLb.Name = "leftColumnLb";
             this.leftColumnLb.Size = new System.Drawing.Size(269, 250);
             this.leftColumnLb.TabIndex = 8;
-            this.leftColumnLb.SelectedIndexChanged += new System.EventHandler(this.LeftColumn_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -190,9 +180,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(10, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 21);
+            this.label2.Size = new System.Drawing.Size(318, 21);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Sort the books";
+            this.label2.Text = "Identify the top level Call Number for:";
             // 
             // panel6
             // 
@@ -220,6 +210,16 @@
             // 
             this.HowToPlayTt.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.HowToPlayTt.ToolTipTitle = "How to play";
+            // 
+            // AnswersCLb
+            // 
+            this.AnswersCLb.CheckOnClick = true;
+            this.AnswersCLb.FormattingEnabled = true;
+            this.AnswersCLb.Location = new System.Drawing.Point(14, 85);
+            this.AnswersCLb.Name = "AnswersCLb";
+            this.AnswersCLb.Size = new System.Drawing.Size(298, 139);
+            this.AnswersCLb.TabIndex = 13;
+            this.AnswersCLb.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AnswersCLb_ItemCheck);
             // 
             // FindingCallNumebersTask
             // 
@@ -255,12 +255,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip HowToPlayTt;
-        private System.Windows.Forms.ListBox rightColumnLb;
         private System.Windows.Forms.ListBox leftColumnLb;
         private System.Windows.Forms.Button SubmitBtn;
+        private System.Windows.Forms.Label questionDescriptionLb;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckedListBox AnswersCLb;
     }
 }

@@ -33,7 +33,7 @@ namespace CallNumbers
                     List<string> one = new List<string>();
                     one.Add(oneTemp[0]);
                     //We now have all the data for each row - each tree parent structure
-                    mainTree.Root.Children.Add(new TreeNode<string>() { Data = oneTemp[0].Split(' ')[0], Parent = mainTree.Root });
+                    mainTree.Root.Children.Add(new TreeNode<string>() { Data = oneTemp[0], Parent = mainTree.Root });
 
                     mainTree.Root.Children[i].Children = new List<TreeNode<string>>();
 
