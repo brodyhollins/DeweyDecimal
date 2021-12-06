@@ -37,13 +37,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BackBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AnswersCLb = new System.Windows.Forms.CheckedListBox();
             this.questionDescriptionLb = new System.Windows.Forms.Label();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.HowToPlayTt = new System.Windows.Forms.ToolTip(this.components);
-            this.AnswersCLb = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +126,21 @@
             this.panel2.Size = new System.Drawing.Size(695, 354);
             this.panel2.TabIndex = 19;
             // 
+            // AnswersCLb
+            // 
+            this.AnswersCLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.AnswersCLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AnswersCLb.CheckOnClick = true;
+            this.AnswersCLb.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.AnswersCLb.ForeColor = System.Drawing.Color.White;
+            this.AnswersCLb.FormattingEnabled = true;
+            this.AnswersCLb.Location = new System.Drawing.Point(14, 85);
+            this.AnswersCLb.Name = "AnswersCLb";
+            this.AnswersCLb.Size = new System.Drawing.Size(677, 192);
+            this.AnswersCLb.Sorted = true;
+            this.AnswersCLb.TabIndex = 13;
+            this.AnswersCLb.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AnswersCLb_ItemCheck);
+            // 
             // questionDescriptionLb
             // 
             this.questionDescriptionLb.AutoSize = true;
@@ -183,29 +198,14 @@
             this.label5.Size = new System.Drawing.Size(121, 21);
             this.label5.TabIndex = 21;
             this.label5.Text = "How to play ?";
-            this.HowToPlayTt.SetToolTip(this.label5, "Match the questions in the left column to the answers in the right column.\r\nColou" +
-        "rs will indicate the matched sets.\r\nClick Submit when you completed the matching" +
-        ".");
+            this.HowToPlayTt.SetToolTip(this.label5, "Read the call number description is Yellow.\r\nSelect one of the options presented " +
+        "as your answer.\r\nSubmit to verify answer and determine which level \r\nwill be ask" +
+        "ed next.");
             // 
             // HowToPlayTt
             // 
             this.HowToPlayTt.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.HowToPlayTt.ToolTipTitle = "How to play";
-            // 
-            // AnswersCLb
-            // 
-            this.AnswersCLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.AnswersCLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AnswersCLb.CheckOnClick = true;
-            this.AnswersCLb.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold);
-            this.AnswersCLb.ForeColor = System.Drawing.Color.White;
-            this.AnswersCLb.FormattingEnabled = true;
-            this.AnswersCLb.Location = new System.Drawing.Point(14, 85);
-            this.AnswersCLb.Name = "AnswersCLb";
-            this.AnswersCLb.Size = new System.Drawing.Size(677, 192);
-            this.AnswersCLb.Sorted = true;
-            this.AnswersCLb.TabIndex = 13;
-            this.AnswersCLb.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AnswersCLb_ItemCheck);
             // 
             // FindingCallNumebersTask
             // 
