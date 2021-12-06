@@ -41,6 +41,18 @@ namespace DeweyDecimalApp.Forms
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
+        ///     Open the 'Finding Call Numbers Form'
+        /// </summary>
+        private void FindingCallNumbersBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FindingCallNumebersTask findingCallNumbers = new FindingCallNumebersTask();
+            findingCallNumbers.ShowDialog();
+            this.Close();
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
         ///     Open the 'Awards Tracker Form'
         /// </summary>
         private void BadgesBtn_Click(object sender, EventArgs e)

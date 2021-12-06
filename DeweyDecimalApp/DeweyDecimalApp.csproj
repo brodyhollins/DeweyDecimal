@@ -68,6 +68,12 @@
     <Compile Include="Forms\AwardsTracker.Designer.cs">
       <DependentUpon>AwardsTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FindingCallNumbersTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindingCallNumbersTask.Designer.cs">
+      <DependentUpon>FindingCallNumbersTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\IdentifyingAreasTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AwardsTracker.resx">
       <DependentUpon>AwardsTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindingCallNumbersTask.resx">
+      <DependentUpon>FindingCallNumbersTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\IdentifyingAreasTask.resx">
       <DependentUpon>IdentifyingAreasTask.cs</DependentUpon>
