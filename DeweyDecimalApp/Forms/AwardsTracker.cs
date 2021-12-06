@@ -71,6 +71,26 @@ namespace DeweyDecimalApp.Forms
                 questionsAwardPb.Value = Awards.correctQuestionsAward * 5;
                 questionsAwardLb.Text = String.Concat(Awards.correctQuestionsAward.ToString(), "/20");
             }
+
+            //----------------------------------------------------------------------------------------------------------------//
+            /// <summary>
+            /// Finding Call Numbers Awards
+            /// </summary>
+            /// 
+            // Setting values for 'Reach for the stars' award
+            if (Awards.reachedTopLevel)
+            {
+                starsAwardPb.Value = 100;
+                starsAwardLb.Text = "1/1";
+            }
+
+            // Setting values for 'No room for errors' award
+            if (Awards.reachedTopLevelInOneTry)
+            {
+                errorsAwardPb.Value = 100;
+                errorsAwardLb.Text = "1/1";
+            }
+
         }
 
         //----------------------------------------------------------------------------------------------------------------//

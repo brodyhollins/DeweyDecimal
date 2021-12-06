@@ -39,7 +39,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.questionDescriptionLb = new System.Windows.Forms.Label();
             this.SubmitBtn = new System.Windows.Forms.Button();
-            this.leftColumnLb = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,7 +65,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 711);
+            this.panel3.Size = new System.Drawing.Size(3, 461);
             this.panel3.TabIndex = 14;
             // 
             // panel4
@@ -75,14 +74,14 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(731, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 711);
+            this.panel4.Size = new System.Drawing.Size(3, 461);
             this.panel4.TabIndex = 16;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 708);
+            this.panel5.Location = new System.Drawing.Point(3, 458);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(728, 3);
             this.panel5.TabIndex = 17;
@@ -121,11 +120,10 @@
             this.panel2.Controls.Add(this.AnswersCLb);
             this.panel2.Controls.Add(this.questionDescriptionLb);
             this.panel2.Controls.Add(this.SubmitBtn);
-            this.panel2.Controls.Add(this.leftColumnLb);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(19, 95);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 595);
+            this.panel2.Size = new System.Drawing.Size(695, 354);
             this.panel2.TabIndex = 19;
             // 
             // questionDescriptionLb
@@ -143,35 +141,18 @@
             // 
             this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
             this.SubmitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SubmitBtn.Enabled = false;
             this.SubmitBtn.FlatAppearance.BorderSize = 0;
             this.SubmitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitBtn.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.SubmitBtn.Location = new System.Drawing.Point(540, 541);
+            this.SubmitBtn.Location = new System.Drawing.Point(551, 293);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(140, 38);
             this.SubmitBtn.TabIndex = 11;
             this.SubmitBtn.Text = "Submit";
             this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
-            // 
-            // leftColumnLb
-            // 
-            this.leftColumnLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.leftColumnLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.leftColumnLb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.leftColumnLb.Font = new System.Drawing.Font("Red Hat Display", 12F, System.Drawing.FontStyle.Bold);
-            this.leftColumnLb.FormattingEnabled = true;
-            this.leftColumnLb.ItemHeight = 50;
-            this.leftColumnLb.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.leftColumnLb.Location = new System.Drawing.Point(14, 329);
-            this.leftColumnLb.Name = "leftColumnLb";
-            this.leftColumnLb.Size = new System.Drawing.Size(269, 250);
-            this.leftColumnLb.TabIndex = 8;
             // 
             // label2
             // 
@@ -213,11 +194,16 @@
             // 
             // AnswersCLb
             // 
+            this.AnswersCLb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.AnswersCLb.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AnswersCLb.CheckOnClick = true;
+            this.AnswersCLb.Font = new System.Drawing.Font("Red Hat Display Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.AnswersCLb.ForeColor = System.Drawing.Color.White;
             this.AnswersCLb.FormattingEnabled = true;
             this.AnswersCLb.Location = new System.Drawing.Point(14, 85);
             this.AnswersCLb.Name = "AnswersCLb";
-            this.AnswersCLb.Size = new System.Drawing.Size(298, 139);
+            this.AnswersCLb.Size = new System.Drawing.Size(677, 192);
+            this.AnswersCLb.Sorted = true;
             this.AnswersCLb.TabIndex = 13;
             this.AnswersCLb.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AnswersCLb_ItemCheck);
             // 
@@ -226,7 +212,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(734, 711);
+            this.ClientSize = new System.Drawing.Size(734, 461);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
@@ -258,7 +244,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip HowToPlayTt;
-        private System.Windows.Forms.ListBox leftColumnLb;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.Label questionDescriptionLb;
         private System.Windows.Forms.Label label2;

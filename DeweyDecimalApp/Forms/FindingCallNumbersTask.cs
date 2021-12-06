@@ -13,10 +13,6 @@ namespace DeweyDecimalApp.Forms
     {
         public Random random = new Random();
 
-        int level1, level2, level3;
-        int currentLevel = 3;
-
-
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// Declaring variables to be used throughout form
@@ -24,6 +20,14 @@ namespace DeweyDecimalApp.Forms
         Tree<string> mainTree = new Tree<string>();
         Dictionary<string, string> question = new Dictionary<string, string>();
         Dictionary<int, string> answers = new Dictionary<int, string>();
+
+        //Used for determining our levels within the tree
+        int level1, level2, level3;
+        int currentLevel = 3;
+
+        //Awards tracking values
+        bool noErrors = true;
+        bool topReached = false;
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
@@ -33,42 +37,49 @@ namespace DeweyDecimalApp.Forms
         {
             InitializeComponent();
 
+            //Obtain data from our file of dewey decimal numbers
             FileReader();
-
-
             Init();
 
         }
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Create question and possible answers
+        ///    Get the filename of the text file stored in the root folder and store data in tree
         /// </summary>
-        private void Init()
+        public void FileReader()
         {
-            AnswersCLb.Items.Clear();
+            string fileName = @"..\..\..\CallNumbers.txt";
 
-            GenerateQuestion(3);
-
-            GenerateAnswers();
-
-
+            //Store tree data in memory from file data
+            CallNumbersTree callNumbersTree = new CallNumbersTree();
+            mainTree = callNumbersTree.PopulateCallNumbersTree(fileName);
         }
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Generate a random question description from level 3 in the tree
+        ///     Create question from level 3 and possible answers from top level on intial load
         /// </summary>
-        public void GenerateQuestion(int lvl)
+        private void Init()
+        {
+            AnswersCLb.Items.Clear();
+            GenerateQuestion();
+            GenerateAnswers();
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Generate a random question description from current level in the tree
+        /// </summary>
+        public void GenerateQuestion()
         {
             List<string> values = new List<string>();
             level1 = random.Next(0, 10);
             level2 = random.Next(0, mainTree.Root.Children[level1].Children.Count());
             level3 = random.Next(0, mainTree.Root.Children[level1].Children[level2].Children.Count());
 
-            //Take just the description and remove the key
-
-            switch (lvl)
+            //Determine which level to generate a question from
+            switch (currentLevel)
             {
                 case 3:
                     values = mainTree.Root.Children[level1].Children[level2].Children[level3].Data.Split(' ').ToList();
@@ -77,11 +88,13 @@ namespace DeweyDecimalApp.Forms
                     values = mainTree.Root.Children[level1].Children[level2].Data.Split(' ').ToList();
                     break;
             }
-            
+
+            //Take just the description and remove the key
             string callNumber = values.First();
             values.RemoveAt(0);
             string description = string.Join(" ", values);
 
+            //Add key value pair to the dictionary to compare in the submission
             question.Add(callNumber, description);
             questionDescriptionLb.Text = description;
         }
@@ -93,84 +106,54 @@ namespace DeweyDecimalApp.Forms
         public void GenerateAnswers()
         {
             answers.Clear();
-            //Create a temp dictionary as to not mutate original answers Dictionary
-            Dictionary<int, string> tempAnswers = new Dictionary<int, string>();
-            
             answers.Add(level1, mainTree.Root.Children[level1].Data);
-            tempAnswers.Add(level1, mainTree.Root.Children[level1].Data);
+            
+            int possibleAnswers = 3;
 
-            for (int x = 0; x < 3; x ++)
+            //Generate random possible answers
+            for (int x = 0; x < possibleAnswers; x ++)
             {
                 int index = random.Next(0, 10);
+                //Ensure no duplicates are added to dictionary
                 if (!answers.ContainsKey(index))
                 {
                     answers.Add(index, mainTree.Root.Children[index].Data);
-                    tempAnswers.Add(index, mainTree.Root.Children[index].Data);
                 }
                 else
                 {
+                    //Restart loop
                     x--;
                 }
-                
             }
-
-            //Sort our values by call number
-            var sortByCallNumbers = tempAnswers.ToList();
-            sortByCallNumbers.Sort((set1, set2) => set1.Value.CompareTo(set2.Value));
 
             AnswersCLb.Items.Clear();
             //Populate our checklistbox with the values
-            foreach(var answer in sortByCallNumbers)
+            foreach(var answer in answers)
             {
                 AnswersCLb.Items.Add(answer.Value);
             }
             
         }
 
-        public void FileReader()
-        {
-            string fileName = @"..\..\..\Test.txt";
-
-            CallNumbersTree callNumbersTree = new CallNumbersTree();
-            mainTree = callNumbersTree.PopulateCallNumbersTree(fileName);
-
-            /*Console.WriteLine("Root");
-            Console.WriteLine(mainTree.Root.Data);
-
-            Console.WriteLine("Level 1");
-            Console.WriteLine(mainTree.Root.Children[0].Data);
-            Console.WriteLine("Level 2");
-            Console.WriteLine(mainTree.Root.Children[0].Children[0].Data);
-            Console.WriteLine("Level 3");
-            Console.WriteLine(mainTree.Root.Children[0].Children[0].Children[0].Data);
-
-
-            Console.WriteLine("Level 1");
-            Console.WriteLine(mainTree.Root.Children[0].Data);
-            Console.WriteLine("Level 2");
-            Console.WriteLine(mainTree.Root.Children[0].Children[1].Data);
-            Console.WriteLine("Level 3");
-            Console.WriteLine(mainTree.Root.Children[0].Children[1].Children[0].Data);*/
-        }
-
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Back button, to go back to 'Task Selection Form'
+        ///     Allow only one item to be selected in checkbox
         /// </summary>
-        private void BackBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            TaskSelection taskSelection = new TaskSelection();
-            taskSelection.ShowDialog();
-            this.Close();
-        }
-
         private void AnswersCLb_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             for (int ix = 0; ix < AnswersCLb.Items.Count; ++ix)
                 if (ix != e.Index) AnswersCLb.SetItemChecked(ix, false);
+            SubmitBtn.Enabled = true;
+            if (AnswersCLb.SelectedIndex == -1)
+            {
+                SubmitBtn.Enabled = false;
+            }
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Go up a level on correct answer to question
+        /// </summary>
         public void ContinueToNextLevel()
         {
             if(currentLevel > 1)
@@ -178,39 +161,45 @@ namespace DeweyDecimalApp.Forms
                 DialogResult dialogResult = MessageBox.Show("You identified the call number correctly. \nContinue to next level?", "Correct Answer!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    GenerateQuestion(currentLevel);
+                    GenerateQuestion();
                     GenerateAnswers();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    Console.WriteLine("Go to Main Menu");
+                    ReturnToMainMenu();
                 }
             }
             else
             {
+                topReached = true;
                 TaskCompleted();
             }
             
         }
 
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Stay in current level and regenerate questions and answers
+        /// </summary>
         public void RepeatLevel()
         {
             DialogResult dialogResult = MessageBox.Show("You identified the call number incorrectly. \nKeep trying?", "Incorrect Answer.", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                GenerateQuestion(currentLevel);
+                noErrors = false;
+                GenerateQuestion();
                 GenerateAnswers();
             }
             else if (dialogResult == DialogResult.No)
             {
-                Console.WriteLine("Go to Main Menu");
+                ReturnToMainMenu();
             }
 
         }
 
         //----------------------------------------------------------------------------------------------------------------//
         /// <summary>
-        ///     Get correct answers and compare with user quesses
+        ///     Get correct answers and compare with user choice
         /// </summary>
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
@@ -232,7 +221,45 @@ namespace DeweyDecimalApp.Forms
         /// </summary>
         private void TaskCompleted()
         {
-            Console.WriteLine("Show the finsih screen and cal awards");
+            if (noErrors)
+            {
+                Awards.reachedTopLevelInOneTry = true;
+            }
+            if (topReached)
+            {
+                Awards.reachedTopLevel = true;
+            }
+            // Custom text for the Message Box Popup for being correct
+            string status = "Well Done!";
+            string message = "You reached the top level of the call numbers.";
+            string time = "";
+
+            // Open custom messagebox
+            this.Hide();
+            TaskCompletedMessageBox taskCompletedMessageBox = new TaskCompletedMessageBox(status, message, time, "findingCallNumbers");
+            taskCompletedMessageBox.ShowDialog();
+            this.Close();
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Back button, to go back to 'Task Selection Form'
+        /// </summary>
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            ReturnToMainMenu();
+        }
+
+        //----------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        ///     Return the user to the 'Task Selection Form'
+        /// </summary>
+        public void ReturnToMainMenu()
+        {
+            this.Hide();
+            TaskSelection taskSelection = new TaskSelection();
+            taskSelection.ShowDialog();
+            this.Close();
         }
     }
 }

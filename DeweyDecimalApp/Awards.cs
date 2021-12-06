@@ -22,6 +22,10 @@ namespace DeweyDecimalApp
         public static Boolean completeCallNumberQuestionAward = false;
         public static Boolean completeDescriptionQuestionAward = false;
         public static int correctQuestionsAward = 0;
+
+        //Awards for FindingCallNumbersTask
+        public static Boolean reachedTopLevel = false;
+        public static Boolean reachedTopLevelInOneTry = false;
     }
 }
 //------------------------------------------...ooo000 END OF FILE 000ooo...-------------------------------------------------//

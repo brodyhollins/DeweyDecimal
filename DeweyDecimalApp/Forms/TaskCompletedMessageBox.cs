@@ -38,6 +38,10 @@ namespace DeweyDecimalApp.Forms
                 ReplacingBooksTask taskForm = new ReplacingBooksTask();
                 taskForm.ShowDialog();
             }
+            else if (taskCompleted.Equals("findingCallNumbers")){
+                FindingCallNumebersTask taskForm = new FindingCallNumebersTask();
+                taskForm.ShowDialog();
+            }
             else
             {
                 IdentifyingAreasTask taskForm = new IdentifyingAreasTask();
